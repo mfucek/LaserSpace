@@ -9,6 +9,8 @@ ambientObjects.push(
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 500]],
+    },
+    look: {
       fill: "#324ea810",
       stroke: "#324ea840"
     }
@@ -23,6 +25,8 @@ ambientObjects.push(
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 1000]],
+    },
+    look: {
       fill: "#101010",
       stroke: "#324ea880"
     }
@@ -30,12 +34,14 @@ ambientObjects.push(
 );
 
 test = new Entity();
+test.y = -200;
 test.mesh = readJson('Assets/OBJ/spider.json');
-test.mesh.stroke = "#ff0000";
-test.mesh.fill = "#ff000020";
 test.mesh.vertices.push([0,0,0]);
 test.mesh.circles = [[253, 120]];
-test.y = -200;
+test.look = {
+  stroke: "#ff0000",
+  fill: "#ff000020"
+}
 test.physics = {
   collisionRadius: 120,
   solid: true

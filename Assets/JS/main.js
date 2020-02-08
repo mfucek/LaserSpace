@@ -16,7 +16,7 @@ setInterval(() => {
   Camera.adjust(Player);
 
   ambientObjects.forEach(testObject => {
-    if (testObject.physics.solid == true && Player != testObject) {
+    if (testObject.physics.solid == true & Player != testObject) {
       testCollisions(Player, testObject);
     }
   });

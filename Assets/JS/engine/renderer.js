@@ -16,7 +16,7 @@ function render(objects, collisions) {
       e.circles.forEach(circle => {
         // [ vertID, radius ]    
         var p = e.vertices[circle[0]-1];        
-        drawCircle(p, [circle[1]], e.stroke, e.fill);
+        drawCircle(p, [circle[1]], element.look.stroke, element.look.fill, false);
       });
         
     }
@@ -24,14 +24,14 @@ function render(objects, collisions) {
     // FACE HANDLING
     if (e.faces) {       
       e.faces.forEach(face => {         
-        drawSegment( mapVertices(face, e.vertices), e.stroke, e.fill );
+        drawSegment( mapVertices(face, e.vertices), element.look.stroke, element.look.fill );
       });  
     }
 
     // LINE HANDLING
     if (e.lines) {  
       e.lines.forEach(line => { 
-        drawSegment( mapVertices(line, e.vertices), e.stroke );
+        drawSegment( mapVertices(line, e.vertices), element.look.stroke );
       });  
     }
 
@@ -43,8 +43,8 @@ function render(objects, collisions) {
     }
 
     // COLLISION RENDERING
-    if (collisions) {
-      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius, "#ff000040" )
+    if (collisions & element.physics.solid == true ) {
+      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius + 2, "#ff000040", undefined, true)
     }
     
     // traces(Player);
@@ -55,7 +55,12 @@ function render(objects, collisions) {
 
 // TODO dashed circle function render
 
-function drawCircle(vert, size, strokeColor, fillColor) {
+function drawCircle(vert, size, strokeColor, fillColor, dash) {
+  if (dash) {
+    ctx.setLineDash([5, 15]);    
+  } else {
+    ctx.setLineDash([]);    
+  }
   ctx.beginPath();
   var p = projectVertex(vert, Camera);
   ctx.arc(

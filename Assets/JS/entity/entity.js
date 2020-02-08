@@ -2,15 +2,18 @@ class Entity {
   constructor(optional) {
     var optional = optional || {};
 
+    // Position
     this.x = optional.x || 0;
     this.y = optional.y || 0;
     this.z = optional.z || 0;
   
+    // Dynamics
     this.direction = optional.direction || Math.PI / 2; // 0-360
-    this.intensity = optional.intensity || 0;
-  
+    this.intensity = optional.intensity || 0;  
     this.maxSpeed = optional.maxSpeed || 10;
+    this.frictionIntensity = .2;
 
+    // Mesh
     this.mesh = optional.mesh || {
       vertices: [[0,0,0]],
       circles: [[1, 10]],
@@ -18,6 +21,13 @@ class Entity {
       stroke: undefined
     };
 
+    // Look
+    this.look = optional.look || {
+      fill: undefined,
+      stroke: undefined
+    }
+
+    // Physics
     this.physics = optional.physics || {
       // mass: 1,
       solid: false,
@@ -66,7 +76,7 @@ class Entity {
 
   friction() {
     if (this.intensity > 0) {
-      this.intensity = this.intensity - friction;
+      this.intensity = this.intensity - this.frictionIntensity;
     }
     if (Math.abs(this.intensity) < 0.1) {
       this.intensity = 0;

@@ -1,3 +1,6 @@
+
+var scale = 10;
+
 function traces(Player) {
   offsetX = Math.sin(-Player.direction) * 10 * Camera.zoom * 0.15;
   offsetY = Math.cos(-Player.direction) * 10 * Camera.zoom * 0.15;
@@ -97,4 +100,4 @@ function zap(v1, v2) {  // U PATH PRETVORITI
     ctx.stroke();
 }
 
-// traces must equal to mvmt_keypress direction, not to Player.direction
+// traces must equal to delta xy, not to Player.direction

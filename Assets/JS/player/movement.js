@@ -1,3 +1,6 @@
+var acceleration = 1;
+
+
 
 // Input Listener
 var keys = {
@@ -46,16 +49,16 @@ document.addEventListener('keyup', function(event) {
 // by adding 'decision' vectors get direction, then globally apply the direction
 function checkMovement() {
   if (keys['w']) {
-    Player.addVector(Math.PI * 270 / 180, acceleration);
+    Player.addVector(Math.PI * 270 / 180, this.acceleration);
   }
   if (keys['s']) {
-    Player.addVector(Math.PI * 90 / 180, acceleration);
+    Player.addVector(Math.PI * 90 / 180, this.acceleration);
   }
   if (keys['a']) {
-    Player.addVector(Math.PI * 180 / 180, acceleration);
+    Player.addVector(Math.PI * 180 / 180, this.acceleration);
   }
   if (keys['d']) {
-    Player.addVector(Math.PI * 0 / 180, acceleration);
+    Player.addVector(Math.PI * 0 / 180, this.acceleration);
   }
 }
 
