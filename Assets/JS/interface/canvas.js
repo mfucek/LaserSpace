@@ -10,13 +10,5 @@ var offset = {
   y: c.height/2,
 }
 
-// NE RADI :(
-window.addEventListener('resize', () => {
-  c.width = window.innerWidth;
-  c.height = window.innerHeight;
-  
-  var offset = {
-    x: c.width/2,
-    y: c.height/2,
-  }
-});
+var initialWidth = window.innerWidth;
+var initialHeight = window.innerHeight;

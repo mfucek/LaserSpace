@@ -1,5 +1,12 @@
 function render(objects, collisions) {
   
+  sW = window.innerWidth / initialWidth;
+  sH = window.innerHeight / initialHeight;
+  tW = 0//-( window.innerWidth - initialWidth ) / 2;
+  tH = 0//-( window.innerHeight - initialHeight ) / 2;
+  sQ = Math.max(sW, sH)
+  ctx.transform(sH, 0, 0, sW, tW, tW);
+  
   (objects).forEach(element => {
     
     e = element.getMesh();
