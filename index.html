@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="Assets/CSS/style.css">
+  <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+
+</head>
+
+<html>
+<body>
+  <canvas id="myCanvas"></canvas>
+  <div class="minimap"></div>
+  <div class="bar-container">
+    <div class="bar health"></div>
+    <div class="bar shield"></div>
+  </div>
+  <div class="ability-container">
+    <div class="ability cooldown">
+      <i class="fas fa-bolt"></i>
+      <div class="title"> LMB </div>
+    </div>
+    <div class="ability">
+      <i class="fas fa-rocket"></i>
+      <div class="title"> 1 </div>
+    </div>
+    <div class="ability">
+      <i class="fas fa-angle-double-up"></i>
+      <div class="title"> 2 </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<script src="Assets/JS/interface/canvas.js"></script>
+<script src="Assets/JS/interface/abilities.js"></script>
+
+<script src="Assets/JS/engine/JSONParser.js"></script>
+<script src="Assets/JS/misc/camera.js"></script>
+<script src="Assets/JS/entity/entity.js"></script>
+<script src="Assets/JS/entity/player.js"></script>
+<script src="Assets/JS/player/movement.js"></script>
+<script src="Assets/JS/player/physics.js"></script>
+<script src="Assets/JS/misc/ambience.js"></script>
+<script src="Assets/JS/engine/projection.js"></script>
+<script src="Assets/JS/engine/effectRenderer.js"></script>
+<script src="Assets/JS/engine/renderer.js"></script>
+<script src="Assets/JS/networking/socket.js"></script>
+<script src="Assets/JS/main.js"></script>
