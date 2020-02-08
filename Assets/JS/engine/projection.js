@@ -11,19 +11,22 @@ function project(target, camera) {
 
 function projectVertex(vertex, camera) {
   zoom = camera.zoom / 10
+  FOV = 100
 
   tx = vertex[0]
   ty = vertex[1]
-  tz = vertex[2]
+  tz = -vertex[2] / 10
 
-  xP = offset.x + ( tx - camera.x ) * zoom
-  yP = offset.y + ( ty - camera.y ) * zoom
+  xP = ( tx - camera.x ) * zoom
+  yP = ( ty - camera.y ) * zoom
 
   xZ = (xP - offset.x) * tz * zCoeficient;
   yZ = (yP - offset.y) * tz * zCoeficient;
 
+  z = FOV/(FOV + tz)
+
   return {
-    x: xP + xZ,
-    y: yP + yZ
+    x: offset.x + xP * z,//+ xZ,
+    y: offset.y + yP * z//+ yZ
   }
 }

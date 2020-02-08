@@ -5,7 +5,7 @@ ambientObjects.push(
   new Entity({
     x: 2000,
     y: 1500,
-    z: -800,
+    z: -5000,
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 500]],
@@ -19,7 +19,7 @@ ambientObjects.push(
   new Entity({
     x: 0,
     y: 0,
-    z: -375*2,
+    z: -3000,
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 1000]],
