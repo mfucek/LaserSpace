@@ -37,9 +37,7 @@ setInterval(() => {
 
 // mesh list loader - later easy switch to API
 
-// entity hierarchy overhaul -> single list
 // PREFAB objects
-// getMesh rotations
 // Mesh (+ modular mesh), Animations 
 // entity parent attribute
 

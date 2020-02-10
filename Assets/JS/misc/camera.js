@@ -3,8 +3,8 @@ var Camera = {
   x: 0,
   y: 0,
 
-  zoom: 10,
-  zoomTarget: 10,
+  zoom: 2,
+  zoomTarget: 5,
   zoomRate: 5,
 
   followTarget: undefined,

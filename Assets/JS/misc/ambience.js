@@ -1,6 +1,12 @@
 
 ambientObjects = []
 
+meshBuffer = {
+  meteor: readJson('Assets/OBJ/meteor.json'),
+  wreck: readJson('Assets/OBJ/wreck.json'),
+  ship: readJson('Assets/OBJ/ship.json')
+}
+
 ambientObjects.push(
   new Entity({
     x: 2000,
@@ -38,7 +44,7 @@ ambientObjects.push(
     z: 0,
     x: 2000,
     y: -1000,
-    mesh: readJson('Assets/OBJ/wreck.json'),
+    mesh: meshBuffer.wreck,
     look: {
       stroke: "#ffffff04",
       fill: "#00000020"
@@ -60,7 +66,7 @@ ambientObjects.push(
     z: 0,  
     x: 0, 
     y: -200,  
-    mesh: readJson('Assets/OBJ/meteor.json'),
+    mesh: meshBuffer.meteor,
     look: {
       stroke: "#ffffff08",
       fill: "#ffffff08"

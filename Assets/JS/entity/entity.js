@@ -3,6 +3,8 @@ class Entity {
     var optional = optional || {};
 
     // Position
+    // this.parent = optional.parent || undefined;
+    // if parent then x,y,z are local
     this.x = optional.x || 0;
     this.y = optional.y || 0;
     this.z = optional.z || 0;
