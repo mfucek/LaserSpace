@@ -1,4 +1,4 @@
-filename = "meteor"
+filename = "ship"
 f = open("Assets/OBJ/" + filename + ".obj", "r")
 f2 = open("Assets/OBJ/" + filename + ".json", "w")
 
@@ -12,7 +12,7 @@ while r:
   if r[0:2] == "v ":
     ar = r.split()
     ar.pop(0)
-    ar = list( map((lambda x:round(float(x)*200, 2)), ar) ) 
+    ar = list( map((lambda x:round(float(x)*100, 2)), ar) ) 
     ar[2], ar[1] = ar[1], ar[2]
     vertexes.append(ar)
 

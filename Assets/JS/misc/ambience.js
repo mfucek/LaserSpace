@@ -5,7 +5,7 @@ ambientObjects.push(
   new Entity({
     x: 2000,
     y: 1500,
-    z: -5000,
+    z: -60000,
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 500]],
@@ -21,7 +21,7 @@ ambientObjects.push(
   new Entity({
     x: 0,
     y: 0,
-    z: -3000,
+    z: -20000,
     mesh: {
       vertices: [[0, 0, 0]],
       circles: [[1, 1000]],
@@ -33,20 +33,44 @@ ambientObjects.push(
   })
 );
 
-test = new Entity();
-test.y = -200;
-test.mesh = readJson('Assets/OBJ/spider.json');
-test.mesh.vertices.push([0,0,0]);
-test.mesh.circles = [[253, 120]];
-test.look = {
-  stroke: "#ff0000",
-  fill: "#ff000020"
-}
-test.physics = {
-  collisionRadius: 120,
-  solid: true
-}
+ambientObjects.push(
+  new Entity({
+    z: 0,
+    x: 2000,
+    y: -1000,
+    mesh: readJson('Assets/OBJ/wreck.json'),
+    look: {
+      stroke: "#ffffff04",
+      fill: "#00000020"
+    },
+    transform: {
+      scale: 20,
+      rotation: [0, 0, 0]
+    },
+    physics: {
+      collisionRadius: 120,
+      solid: false
+    }
+  })
+);
 
-ambientObjects.push( test );
+
+ambientObjects.push(
+  new Entity({
+    z: 0,  
+    x: 0, 
+    y: -200,  
+    mesh: readJson('Assets/OBJ/meteor.json'),
+    look: {
+      stroke: "#ffffff08",
+      fill: "#ffffff08"
+    },
+    physics: {
+      collisionRadius: 120,
+      solid: true
+    },
+    spin: true
+  })
+);
 
 ambientObjects.push( Player );

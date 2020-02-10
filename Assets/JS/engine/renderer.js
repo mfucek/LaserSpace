@@ -16,7 +16,7 @@ function render(objects, collisions) {
       e.circles.forEach(circle => {
         // [ vertID, radius ]    
         var p = e.vertices[circle[0]-1];        
-        drawCircle(p, [circle[1]], element.look.stroke, element.look.fill, false);
+        drawCircle(p, [circle[1]], element.look, false);
       });
         
     }
@@ -24,14 +24,14 @@ function render(objects, collisions) {
     // FACE HANDLING
     if (e.faces) {       
       e.faces.forEach(face => {         
-        drawSegment( mapVertices(face, e.vertices), element.look.stroke, element.look.fill );
+        drawSegment( mapVertices(face, e.vertices), element.look );
       });  
     }
 
     // LINE HANDLING
     if (e.lines) {  
       e.lines.forEach(line => { 
-        drawSegment( mapVertices(line, e.vertices), element.look.stroke );
+        drawSegment( mapVertices(line, e.vertices), element.look );
       });  
     }
 
@@ -44,7 +44,7 @@ function render(objects, collisions) {
 
     // COLLISION RENDERING
     if (collisions & element.physics.solid == true ) {
-      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius + 2, "#ff000040", undefined, true)
+      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius + 10, {stroke: "#ff0000"}, true)
     }
     
     // traces(Player);
@@ -54,8 +54,12 @@ function render(objects, collisions) {
 
 
 // TODO dashed circle function render
+// treba staviti da se passa look a ne pojedinacno
 
-function drawCircle(vert, size, strokeColor, fillColor, dash) {
+function drawCircle(vert, size, look) {
+  strokeColor = look.stroke;
+  fillColor = look.fill;
+  dash = look.dash;
   if (dash) {
     ctx.setLineDash([5, 15]);    
   } else {
@@ -77,7 +81,9 @@ function drawCircle(vert, size, strokeColor, fillColor, dash) {
   ctx.stroke();  
 }
 
-function drawSegment(vertList, strokeColor, fillColor) {
+function drawSegment(vertList, look) {
+  strokeColor = look.stroke;
+  fillColor = look.fill;
   n = 0;  
   ctx.beginPath();  
   vertList.forEach(vert => {

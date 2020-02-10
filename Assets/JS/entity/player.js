@@ -2,10 +2,12 @@ class PlayerEntity extends Entity {
   constructor() {
     super();
     
-    this.mesh = {
-      vertices: [[0, 0, 0]],
-      circles: [[1, 20]]
-    };
+    this.mesh = readJson('Assets/OBJ/ship.json');
+
+    this.transform = {
+      scale: 0.5,
+      rotation: [0, 0, 0]
+    }
 
     this.look = {
       fill: "#ffffff20",

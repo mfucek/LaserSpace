@@ -1,6 +1,21 @@
 var acceleration = 1;
 
+var newDir = 0;
+fr = 2;
 
+looking = {
+  intensity: 10,
+  direction: 0,
+
+  addVector : function(d, i) {
+    var x = Math.cos(this.direction) * this.intensity + Math.cos(d) * i;
+    var y = Math.sin(this.direction) * this.intensity + Math.sin(d) * i;
+
+    this.direction = Math.atan2(y, x);
+    this.intensity = 10 // Math.round( Math.hypot(x, y) * 10) / 10;
+  }
+
+}
 
 // Input Listener
 var keys = {
@@ -50,15 +65,20 @@ document.addEventListener('keyup', function(event) {
 function checkMovement() {
   if (keys['w']) {
     Player.addVector(Math.PI * 270 / 180, this.acceleration);
+    looking.addVector( 0, fr );
   }
   if (keys['s']) {
     Player.addVector(Math.PI * 90 / 180, this.acceleration);
+    looking.addVector( Math.PI, fr );
   }
   if (keys['a']) {
     Player.addVector(Math.PI * 180 / 180, this.acceleration);
+    looking.addVector( Math.PI * 3 / 2, fr );
   }
   if (keys['d']) {
     Player.addVector(Math.PI * 0 / 180, this.acceleration);
+    looking.addVector( Math.PI / 2, fr );
   }
+  Player.transform.rotation = [looking.direction, 0, 0]
 }
 

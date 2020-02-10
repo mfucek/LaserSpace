@@ -15,14 +15,17 @@ setInterval(() => {
 
   Camera.adjust(Player);
 
-  ambientObjects.forEach(testObject => {
-    if (testObject.physics.solid == true & Player != testObject) {
-      testCollisions(Player, testObject);
+  ambientObjects.forEach(e => {
+    if (e.physics.solid == true & Player != e) {
+      testCollisions(Player, e);
+    }
+    if (e.spin) {
+      e.transform.rotation[0] += 0.005;
     }
   });
 
   c.width = c.width; // CLS
-  render(ambientObjects, true);
+  render(ambientObjects, false);
 
   checkAbilities();
 
@@ -46,5 +49,6 @@ setInterval(() => {
 // u Entity i u efektima
 
 // overlay effect pipeline
+// particle effects
 // Shield Absorb
 // player aim
