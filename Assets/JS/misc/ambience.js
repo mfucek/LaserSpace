@@ -7,6 +7,7 @@ meshBuffer = {
   ship: readJson('Assets/OBJ/ship.json')
 }
 
+// Planets
 ambientObjects.push(
   new Entity({
     x: 2000,
@@ -22,7 +23,6 @@ ambientObjects.push(
     }
   })
 );
-
 ambientObjects.push(
   new Entity({
     x: 0,
@@ -39,6 +39,7 @@ ambientObjects.push(
   })
 );
 
+// Wreck
 ambientObjects.push(
   new Entity({
     z: 0,
@@ -60,12 +61,46 @@ ambientObjects.push(
   })
 );
 
-
+// Meteors
 ambientObjects.push(
   new Entity({
     z: 0,  
     x: 0, 
     y: -200,  
+    mesh: meshBuffer.meteor,
+    look: {
+      stroke: "#ffffff08",
+      fill: "#ffffff08"
+    },
+    physics: {
+      collisionRadius: 120,
+      solid: true
+    },
+    spin: true
+  })
+);
+ambientObjects.push(
+  new Entity({
+    z: 0,  
+    x: 400, 
+    y: 200,  
+    mesh: meshBuffer.meteor,
+    look: {
+      stroke: "#ffffff08",
+      fill: "#ffffff08"
+    },
+    physics: {
+      collisionRadius: 120,
+      solid: true
+    },
+    spin: true
+  })
+);
+ambientObjects.push(
+  new Entity({
+    z: 0,  
+    x: -200, 
+    y: 200,  
     mesh: meshBuffer.meteor,
     look: {
       stroke: "#ffffff08",
