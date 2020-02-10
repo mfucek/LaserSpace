@@ -23,3 +23,4 @@ class PlayerEntity extends Entity {
 }
 
 var Player = new PlayerEntity();
+Camera.target = Player;
