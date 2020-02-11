@@ -1,5 +1,8 @@
 var acceleration = 1;
 
+//////////////////////////
+// LJEPSE OVO NAPRAVITI //
+//////////////////////////
 var newDir = 0;
 fr = 2;
 

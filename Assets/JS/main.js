@@ -1,5 +1,4 @@
 
-
 // Main Cycle
 
 var time = 0
@@ -29,24 +28,8 @@ setInterval(() => {
 
   checkAbilities();
 
-}, 20); 
+}, 20);
 
-//////////
-// TODO //
-//////////
 
-// mesh list loader - later easy switch to API
-
-// PREFAB objects
-// Mesh (+ modular mesh), Animations 
-// entity parent attribute
-
-// *serverside* Entity (following mechanic (equipment))
-
-// IDEA fake player direction that has minimum intensity of x and caches actual direction
-// u Entity i u efektima
-
-// overlay effect pipeline
-// particle effects
-// Shield Absorb
-// player aim
+// https://playground.babylonjs.com/#QFRJ7K#9
+// https://forum.babylonjs.com/t/fps-affects-game-speed-framerate-independence/2419

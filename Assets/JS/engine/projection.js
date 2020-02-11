@@ -16,7 +16,7 @@ function projectVertex(vertex, camera) {
   ty = vertex[1]
   tz = -vertex[2] / 10
 
-  z = Camera.FOV/(Camera.FOV + tz)
+  z = Camera.FOV/(camera.z + tz)
 
   xP = offset.x + ( ( tx - camera.x ) * zoom ) * z
   yP = offset.y + ( ( ty - camera.y ) * zoom ) * z

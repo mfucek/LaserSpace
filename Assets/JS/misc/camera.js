@@ -2,6 +2,7 @@
 var Camera = {
   x: 0,
   y: 0,
+  z: 100,
 
   zoom: 2,
   zoomTarget: 5,

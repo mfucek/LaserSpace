@@ -16,6 +16,8 @@ class Entity {
     this.frictionIntensity = .2;
 
     // Mesh
+    // Multiple Mesh? -> modular mesh
+    // Vertex, path Animations :) 
     this.mesh = optional.mesh || {
       vertices: [[0,0,0]],
       circles: [[1, 10]],

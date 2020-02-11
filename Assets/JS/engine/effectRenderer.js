@@ -1,4 +1,9 @@
 
+// overlay effect pipeline
+// particle effects
+// Shield Absorb
+// player aim
+
 var scale = 10;
 
 function traces(Player) {
