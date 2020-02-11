@@ -8,7 +8,7 @@ fr = 2;
 
 looking = {
   intensity: 10,
-  direction: 0,
+  direction: Math.PI,
 
   addVector : function(d, i) {
     var x = Math.cos(this.direction) * this.intensity + Math.cos(d) * i;
@@ -67,12 +67,12 @@ document.addEventListener('keyup', function(event) {
 // by adding 'decision' vectors get direction, then globally apply the direction
 function checkMovement() {
   if (keys['w']) {
-    Player.addVector(Math.PI * 270 / 180, this.acceleration);
-    looking.addVector( 0, fr );
-  }
-  if (keys['s']) {
     Player.addVector(Math.PI * 90 / 180, this.acceleration);
     looking.addVector( Math.PI, fr );
+  }
+  if (keys['s']) {
+    Player.addVector(Math.PI * 270 / 180, this.acceleration);
+    looking.addVector( 0, fr );
   }
   if (keys['a']) {
     Player.addVector(Math.PI * 180 / 180, this.acceleration);

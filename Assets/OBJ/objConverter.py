@@ -1,4 +1,4 @@
-filename = "capture"
+filename = "cursor"
 f = open("Assets/OBJ/" + filename + ".obj", "r")
 f2 = open("Assets/OBJ/" + filename + ".json", "w")
 

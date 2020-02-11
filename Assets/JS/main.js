@@ -6,6 +6,7 @@ setInterval(() => {
   time += 1
 
 
+  updateCursor(c)  
 
   Player.friction();
   checkMovement();
