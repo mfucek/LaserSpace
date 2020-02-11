@@ -9,15 +9,16 @@ fr = 2;
 looking = {
   intensity: 10,
   direction: Math.PI,
+  lastDirection: Math.PI,
 
   addVector : function(d, i) {
     var x = Math.cos(this.direction) * this.intensity + Math.cos(d) * i;
     var y = Math.sin(this.direction) * this.intensity + Math.sin(d) * i;
 
-    this.direction = Math.atan2(y, x);
+    this.direction = Math.round( Math.atan2(y, x) * 100 ) / 100;
     this.intensity = 10 // Math.round( Math.hypot(x, y) * 10) / 10;
+    // Player.transform.rotation = [0, 0, 0] 
   }
-
 }
 
 // Input Listener
@@ -63,9 +64,16 @@ document.addEventListener('keyup', function(event) {
   }
 });
 
-// FIX COMBINATIONS
-// by adding 'decision' vectors get direction, then globally apply the direction
+// var deltaDirection = looking.direction;
+// var lastDirection = looking.direction;
+
+// function sigmoid(t) {
+//   return 1/(1+Math.pow(Math.E, -t));
+// }
+
 function checkMovement() {
+  // lastDirection = looking.direction;
+  
   if (keys['w']) {
     Player.addVector(Math.PI * 90 / 180, this.acceleration);
     looking.addVector( Math.PI, fr );
@@ -82,6 +90,9 @@ function checkMovement() {
     Player.addVector(Math.PI * 0 / 180, this.acceleration);
     looking.addVector( Math.PI / 2, fr );
   }
+
+  // deltaDirection = sigmoid( lastDirection - looking.direction   );
+
   Player.transform.rotation = [looking.direction, 0, 0]
 }
 
