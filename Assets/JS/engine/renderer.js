@@ -46,10 +46,7 @@ function render(objects, collisions) {
     if (collisions & element.physics.solid == true ) {
       drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius + 10, {stroke: "#ff0000"}, true)
     }
-    
-    // traces(Player);
   });
-
 }
 
 

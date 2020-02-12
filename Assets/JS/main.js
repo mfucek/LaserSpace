@@ -24,8 +24,11 @@ setInterval(() => {
     }
   });
 
+  particleDecay();
+
   c.width = c.width; // CLS
   render(ambientObjects, false);
+  render(particleObjects, false);
 
   checkAbilities();
 
