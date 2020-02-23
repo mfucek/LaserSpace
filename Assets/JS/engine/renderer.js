@@ -44,14 +44,13 @@ function render(objects, collisions) {
 
     // COLLISION RENDERING
     if (collisions & element.physics.solid == true ) {
-      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius + 10, {stroke: "#ff0000"}, true)
+      drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius, {stroke: "#ff0000"}, true)
     }
   });
 }
 
 
-// TODO dashed circle function render
-// treba staviti da se passa look a ne pojedinacno
+// dash ne radi
 
 function drawCircle(vert, size, look) {
   strokeColor = look.stroke;

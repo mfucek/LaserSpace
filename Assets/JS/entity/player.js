@@ -16,11 +16,15 @@ class PlayerEntity extends Entity {
     
     this.physics = {
       solid: true,
-      collisionRadius: 20
+      collisionRadius: 40
     };
 
+    this.maxSpeed = 20;
+    this.frictionIntensity = .5;
   }
 }
 
 var Player = new PlayerEntity();
+Player.x = Math.floor(Math.random() * 2000) - 1000;
+Player.y = Math.floor(Math.random() * 2000) - 1000;
 Camera.target = Player;

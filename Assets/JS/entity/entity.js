@@ -123,6 +123,9 @@ class Entity {
     if (this.intensity > this.maxSpeed) {
       this.intensity = this.maxSpeed;
     }
+    if (this.intensity < 0) {
+      this.intensity = 0;
+    }
   }
 
   friction() {

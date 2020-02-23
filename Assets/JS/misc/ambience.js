@@ -1,35 +1,6 @@
 
 ambientObjects = []
 
-meshBuffer = {
-  meteor: readJson('Assets/OBJ/meteor.json'),
-  wreck: readJson('Assets/OBJ/wreck.json'),
-  ship: readJson('Assets/OBJ/ship.json'),
-  capture: readJson('Assets/OBJ/capture.json')
-}
-
-entityPrefab = {
-  meteor: {
-    mesh: meshBuffer.meteor,
-    look: {
-      stroke: "#ffffff08",
-      fill: "#ffffff08"
-    },
-    physics: {
-      collisionRadius: 120,
-      solid: true
-    },
-    spin: true
-  },
-  create : function(obj, optional) {
-    var r = new Entity( this[obj] );
-    r.x = optional.x || 0;
-    r.y = optional.y || 0;
-    r.z = optional.z || 0;
-    return r
-  }
-}
-
 // Planets
 ambientObjects.push(
   new Entity({
