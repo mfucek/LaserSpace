@@ -5,9 +5,6 @@ var time = 0
 setInterval(() => {
   time += 1
 
-  // PARTICLE HANDLING
-  particleUpdate();
-
   // CURSOR
   updateCursor(c);
 
@@ -30,6 +27,9 @@ setInterval(() => {
     }
   });
 
+  // PARTICLE HANDLING
+  particleUpdate();
+  
   // ANIMATION HANDLING
   animation(ambientObjects);
 

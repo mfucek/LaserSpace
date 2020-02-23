@@ -49,9 +49,3 @@ socket.on('Position', (msg) => {
     });
   }
 });
-
-// get meshes
-
-// get ambience hierarchy
-// get players hierarchy
-// get NPCs hierarchy

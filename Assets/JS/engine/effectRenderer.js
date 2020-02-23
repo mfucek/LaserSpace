@@ -42,7 +42,6 @@ function particleUpdate() {
   // Explosion handling
   particleObjects.explosions.forEach(p => {
     a = (time - p.initialTime) / p.duration;
-    // opacity falloff
     o = ( 255  - Math.round(a * 255) ).toString(16).pad()
     p.look.stroke = "#ffffff" + o    
     p.transform.scale = 1 - ( (1 - a) ** 2);
