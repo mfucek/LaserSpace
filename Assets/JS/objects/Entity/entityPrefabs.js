@@ -27,10 +27,7 @@ entityPrefab = {
   },
 
   create : function(obj, optional) {
-    var r = new Entity( this[obj] );
-    r.x = optional.x || 0;
-    r.y = optional.y || 0;
-    r.z = optional.z || 0;
+    var r = new Entity( { ...this[obj], ...optional } );    
     return r
   }
 }

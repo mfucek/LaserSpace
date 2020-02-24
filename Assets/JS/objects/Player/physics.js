@@ -1,3 +1,5 @@
+var lastTime = 0;
+
 function testCollisions(obj1, obj2) {
   if (
     Math.hypot(
@@ -14,13 +16,15 @@ function testCollisions(obj1, obj2) {
     obj1.x += Math.cos(obj1.direction) * (displace + 2);
     obj1.y += Math.sin(obj1.direction) * (displace + 2);
 
-
-    particleObjects.explosions.push(
-      particlePrefab.create("collisionExplosion", {
-        x: ( obj1.x + obj2.x ) / 2,
-        y: ( obj1.y + obj2.y ) / 2,
-        // later calculate actual point of collision!
-      })
-    );
+    if ( time - lastTime > 10 ) {
+      particleObjects.explosions.push(
+        particlePrefab.create("collisionExplosion", {
+          x: ( obj1.x + obj2.x ) / 2,
+          y: ( obj1.y + obj2.y ) / 2,
+          // later calculate actual point of collision!
+        })
+      );
+      lastTime = time
+    }
   };
 };

@@ -58,21 +58,18 @@ ambientObjects.push(
 // Meteors
 ambientObjects.push(
   entityPrefab.create("meteor", {
-    z: 0,  
     x: 0, 
     y: -200
   })
 );
 ambientObjects.push(
   entityPrefab.create("meteor", {
-    z: 0,  
     x: 400, 
     y: 200
   })
 );
 ambientObjects.push(
   entityPrefab.create("meteor", {
-    z: 0,  
     x: -200, 
     y: 200
   })

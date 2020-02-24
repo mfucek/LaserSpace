@@ -1,9 +1,10 @@
+
 class Entity {
   constructor(optional) {
     var optional = optional || {};
 
     // Position
-    // this.parent = optional.parent || undefined;
+    this.parent = optional.parent || undefined;
     // if parent then x,y,z are local
     this.x = optional.x || 0;
     this.y = optional.y || 0;
@@ -99,6 +100,11 @@ class Entity {
       v[1] += this.y;
       v[2] += this.z;
     });
+
+    if (this.parent != undefined) {
+      console.log(ä);
+      
+    }
     // console.log(mesh2.vertices[0]);
     return mesh2;
   }
