@@ -38,9 +38,11 @@ class Entity {
       rotation: [0, 0, 0]
     }
 
-    this.spin = optional.spin || false
+    this.animations = optional.animations || {
+      spin: false
+    }
 
-    if (this.spin) {
+    if (this.animations.spin) {
       this.transform.rotation = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2 ]
     }
 

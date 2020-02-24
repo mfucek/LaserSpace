@@ -5,6 +5,9 @@ var Mouse = {
 
 var Cursor = new Entity({
   // mesh: readJson('Assets/OBJ/cursor.json')
+  look: {
+    stroke: "#ffffff"
+  }
 });
 ambientObjects.push(Cursor);
 

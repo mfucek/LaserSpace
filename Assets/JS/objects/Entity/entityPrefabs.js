@@ -11,7 +11,9 @@ entityPrefab = {
       collisionRadius: 120,
       solid: true
     },
-    spin: true
+    animations: {
+      spin: 0.005
+    }
   },
   
   ship: {

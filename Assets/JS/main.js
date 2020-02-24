@@ -22,10 +22,9 @@ setInterval(() => {
     if (e.physics.solid == true & Player != e) {
       testCollisions(Player, e);
     }
-    if (e.spin) {
-      e.transform.rotation[0] += 0.005;
-    }
   });
+
+  animationUpdate();
 
   // PARTICLE HANDLING
   particleUpdate();
@@ -64,7 +63,6 @@ setInterval(() => {
 
 
 // TODO
-// file hierarchy overhaul (prefabs, etc.)
 // player names?
 // main loop cleanup - too much clutter
 

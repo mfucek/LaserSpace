@@ -21,6 +21,9 @@ class PlayerEntity extends Entity {
 
     this.maxSpeed = 20;
     this.frictionIntensity = .5;
+    this.animations = {
+      phase: 0.005
+    }
   }
 }
 

@@ -5,14 +5,12 @@ particlePrefab = {
     duration: 20,
     mesh: meshBuffer['circle'],
     look: {
-      stroke: "#ff0000"
+      stroke: "#ffffff"
     }
   },
 
   create : function(obj, optional) {
-    var r = new ParticleEntity( { ...this[obj], ...optional } );
-    console.log(this[obj]);
-    
+    var r = new ParticleEntity( { ...this[obj], ...optional } );    
     r.initialTime = time;
     return r
   }

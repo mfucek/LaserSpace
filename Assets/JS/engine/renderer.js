@@ -80,6 +80,8 @@ function drawCircle(vert, size, look) {
 function drawSegment(vertList, look) {
   strokeColor = look.stroke;
   fillColor = look.fill;
+  // TODO opacity handling
+  // get current stroke/fill opacity [7,8], median with opacity
   n = 0;  
   ctx.beginPath();  
   vertList.forEach(vert => {

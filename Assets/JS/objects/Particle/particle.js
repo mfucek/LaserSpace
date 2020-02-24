@@ -15,13 +15,6 @@ class ParticleEntity extends Entity {
 // ctx.strokeStyle = "#6accfc";
 // player aim
 
-///////////////////////////////
-String.prototype.pad = function(size) {
-  var s = String(this);
-  while (s.length < (size || 2)) {s = "0" + s;}
-  return s;
-}
-///////////////////////////////
 
 
 
@@ -46,13 +39,12 @@ function particleUpdate() {
 
   // Explosion handling
   particleObjects.explosions.forEach(p => {
-    originalStroke = p.look.stroke
+    originalLook = p.look
 
     a = (time - p.initialTime) / p.duration;
-    o = ( 255  - Math.round(a * 255) ).toString(16).pad()
-    console.log(p.look.stroke);
     
-    p.look.stroke = originalStroke.substring(0,7) + o    
+    p.look.stroke = originalLook.stroke.substring(0,7) + decToHex(a)
+
     p.transform.scale = 1 - ( (1 - a) ** 2);
     
   });
