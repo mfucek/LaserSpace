@@ -1,5 +1,5 @@
 
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://172.20.10.3:3000');
 
 var playerID = Math.floor(Math.random() * 100000);
 
