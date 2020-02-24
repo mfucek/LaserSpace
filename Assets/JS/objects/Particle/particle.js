@@ -46,9 +46,13 @@ function particleUpdate() {
 
   // Explosion handling
   particleObjects.explosions.forEach(p => {
+    originalStroke = p.look.stroke
+
     a = (time - p.initialTime) / p.duration;
     o = ( 255  - Math.round(a * 255) ).toString(16).pad()
-    p.look.stroke = "#ffffff" + o    
+    console.log(p.look.stroke);
+    
+    p.look.stroke = originalStroke.substring(0,7) + o    
     p.transform.scale = 1 - ( (1 - a) ** 2);
     
   });
