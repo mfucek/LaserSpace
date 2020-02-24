@@ -29,7 +29,7 @@ setInterval(() => {
 
   // PARTICLE HANDLING
   particleUpdate();
-  
+
   // ANIMATION HANDLING
   animation(ambientObjects);
 
@@ -61,6 +61,12 @@ setInterval(() => {
   }
 
 }, 20);
+
+
+// TODO
+// file hierarchy overhaul (prefabs, etc.)
+// player names?
+// main loop cleanup - too much clutter
 
 
 // https://playground.babylonjs.com/#QFRJ7K#9
