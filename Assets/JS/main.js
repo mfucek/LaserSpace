@@ -1,9 +1,16 @@
 
 // Main Cycle
 
+var lastUpdate = Date.now();
+
 var time = 0
 setInterval(() => {
   time += 1
+
+  var now = Date.now();
+  var deltaTime = now - lastUpdate;
+  lastUpdate = now;
+  
 
   // CURSOR
   updateCursor(c);

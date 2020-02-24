@@ -10,6 +10,11 @@ function decToHex(dec) {
   return hex
 }
 
+
+
+
+
+
 function animationUpdate() {
   
   // SPIN

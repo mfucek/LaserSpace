@@ -1,5 +1,3 @@
-var lastTime = 0;
-
 function testCollisions(obj1, obj2) {
   if (
     Math.hypot(
@@ -16,7 +14,9 @@ function testCollisions(obj1, obj2) {
     obj1.x += Math.cos(obj1.direction) * (displace + 2);
     obj1.y += Math.sin(obj1.direction) * (displace + 2);
 
-    if ( time - lastTime > 10 ) {
+    console.log(obj1.intensity);
+    
+    if ( obj1.intensity > 8 ) {
       particleObjects.explosions.push(
         particlePrefab.create("collisionExplosion", {
           x: ( obj1.x + obj2.x ) / 2,
@@ -24,7 +24,6 @@ function testCollisions(obj1, obj2) {
           // later calculate actual point of collision!
         })
       );
-      lastTime = time
     }
   };
 };
