@@ -82,7 +82,7 @@ a {
   margin-right: 20px;
   
   box-shadow: 0 4px 0 #00000040;
-  transition-duration: 0.3s;
+  transition-duration: 0.1s;
   transition-timing-function: cubic-bezier(0.5, 0, 0.33, 2.33);
 
   color: white;
@@ -92,7 +92,7 @@ a {
 }
 .ability:last-child {margin-right: 0;}
 
-.ability.cooldown {
+.ability.pressed {
   box-shadow: 0 -4px 0 #00000080;
   opacity: 0.75;
   background-color: #101010;
@@ -103,11 +103,17 @@ a {
 .ability.cooldown::after {
   content: "";
   position: absolute;
-  top: 20%;
+  top: 100%;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #00000080;
+  animation: linear 0.5s cooldown;
+}
+
+@keyframes cooldown {
+  0% {top: 0%}
+  100% {top: 100%}
 }
 
 .ability .title {

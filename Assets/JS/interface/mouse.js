@@ -25,17 +25,3 @@ function updateCursor(c) {
 c.addEventListener("mousemove", function (e) {
   getMousePosition(c, e)
 }, false);
-
-
-
-// TEST MOUSE OBJECT ADDING
-
-// c.addEventListener('mousedown', function(e) {
-//   ambientObjects.push(
-//     entityPrefab.create("meteor", {
-//       z: 0,  
-//       x: Cursor.x, 
-//       y: Cursor.y
-//     })
-//   );
-// })

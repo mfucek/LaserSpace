@@ -56,12 +56,8 @@ function render(objects, collisions) {
 function drawCircle(vert, size, look) {
   strokeColor = look.stroke;
   fillColor = look.fill;
-  dash = look.dash;
-  if (dash) {
-    ctx.setLineDash([5, 15]);    
-  } else {
-    ctx.setLineDash([]);    
-  }
+  lineWidth = look.lineWidth || [1];
+  ctx.setLineDash(look.dash || []);      
   ctx.beginPath();
   var p = projectVertex(vert, Camera);
   ctx.arc(
@@ -74,13 +70,15 @@ function drawCircle(vert, size, look) {
   ctx.fillStyle = fillColor;
   ctx.strokeStyle = strokeColor;
   if (fillColor) {ctx.fill()}
-  ctx.lineWidth = 1 * Camera.zoom / 10;
+  ctx.lineWidth = lineWidth * Camera.zoom / 10;
   ctx.stroke();  
 }
 
 function drawSegment(vertList, look) {
   strokeColor = look.stroke;
   fillColor = look.fill;
+  lineWidth = look.lineWidth || [1];
+  ctx.setLineDash(look.dash || []);   
   // TODO opacity handling
   // get current stroke/fill opacity [7,8], median with opacity
   n = 0;  
@@ -94,14 +92,14 @@ function drawSegment(vertList, look) {
       ctx.lineTo( p.x, p.y );
     }
   });
-  ctx.closePath();
+  if (look.closePath != false) { ctx.closePath(); }
   ctx.strokeStyle = strokeColor;
   if (fillColor) {
     ctx.fillStyle = fillColor;
-    ctx.closePath();
+    if (look.closePath != false) { ctx.closePath(); }
     ctx.fill();
   }
-  ctx.lineWidth = 1 * Camera.zoom / 10;
+  ctx.lineWidth = lineWidth * Camera.zoom / 10;
   ctx.stroke();
 }
 
