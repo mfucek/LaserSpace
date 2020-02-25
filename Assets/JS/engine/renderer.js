@@ -9,6 +9,12 @@ function render(objects, collisions) {
   ctx.transform(sH, 0, 0, sW, tW, tW);
   
   (objects).forEach(element => {
+
+    // LABEL HANDLING
+        
+    if (element.label) {      
+      drawText(element.label, [element.x, element.y, element.z])
+    }
     
     e = element.getMesh();
 
@@ -52,6 +58,14 @@ function render(objects, collisions) {
 
 
 // dash ne radi
+
+function drawText(text, vert) {
+  var p = projectVertex(vert, Camera);
+  ctx.font = "12px Fredoka One";
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "center";
+  ctx.fillText(text, p.x, p.y - 30);
+}
 
 function drawCircle(vert, size, look) {
   strokeColor = look.stroke;

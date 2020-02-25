@@ -21,6 +21,8 @@ class PlayerEntity extends Entity {
 
     this.maxSpeed = 20;
     this.frictionIntensity = .5;
+
+    this.label = "Player"
   }
 }
 

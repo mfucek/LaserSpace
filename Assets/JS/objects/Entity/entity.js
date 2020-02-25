@@ -3,6 +3,8 @@ class Entity {
   constructor(optional) {
     var optional = optional || {};
 
+    this.label = optional.label || "";
+
     // Position
     this.parent = optional.parent || undefined;
     // if parent then x,y,z are local
@@ -145,6 +147,3 @@ class Entity {
     }
   }
 };
-
-
-var testEntity = new Entity();
