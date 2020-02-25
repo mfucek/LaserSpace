@@ -1,7 +1,0 @@
-# TODO
-file organizing (prep for guns and projectiles)
-guns
-grid (110% big object, snapping to coordinates - posX.floor before draw())
-background colors
-
-collisions

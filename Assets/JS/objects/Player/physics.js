@@ -14,7 +14,7 @@ function testCollisions(obj1, obj2) {
     obj1.x += Math.cos(obj1.direction) * (displace + 2);
     obj1.y += Math.sin(obj1.direction) * (displace + 2);
 
-    console.log(obj1.intensity);
+    // console.log(obj1.intensity);
     
     if ( obj1.intensity > 8 ) {
       particleObjects.explosions.push(

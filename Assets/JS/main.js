@@ -12,9 +12,6 @@ setInterval(() => {
   lastUpdate = now;
   
 
-  // CURSOR
-  updateCursor(c);
-
   // PLAYER MOVEMENT
   Player.friction();
   checkMovement();
@@ -60,6 +57,10 @@ setInterval(() => {
 
   // INTERFACE
   checkAbilities();
+
+  // CURSOR
+  updateCursor(c);
+  updateJoystick(c);
 
   // NETWORK
   if (time == 1 | Player.intensity > 0) {

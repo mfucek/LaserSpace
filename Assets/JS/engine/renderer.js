@@ -1,5 +1,6 @@
 function render(objects, collisions) {
   
+  // FIX THIS!!
   sW = window.innerWidth / initialWidth;
   sH = window.innerHeight / initialHeight;
   tW = 0//-( window.innerWidth - initialWidth ) / 2;
