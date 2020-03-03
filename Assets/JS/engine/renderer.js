@@ -92,6 +92,8 @@ function drawSegment(vertList, look) {
   strokeColor = look.stroke;
   fillColor = look.fill;
   lineWidth = look.lineWidth || [1];
+  shadowColor = look.shadowColor || undefined;
+  shadowBlur = look.shadowBlur || undefined;
   ctx.setLineDash(look.dash || []);   
   // TODO opacity handling
   // get current stroke/fill opacity [7,8], median with opacity
@@ -114,6 +116,10 @@ function drawSegment(vertList, look) {
     ctx.fill();
   }
   ctx.lineWidth = lineWidth * Camera.zoom / 10;
+  ctx.shadowBlur = shadowBlur * Camera.zoom / 10;
+  ctx.shadowColor = shadowColor;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
   ctx.stroke();
 }
 

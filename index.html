@@ -4,6 +4,8 @@
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="viewport", user-scalable="no">
 </head>
@@ -11,7 +13,61 @@
 <html>
 <body>
   <canvas id="myCanvas"></canvas>
-  <div class="minimap"></div>
+
+  <div class="interface">
+    <div class="player-info">
+      <h2> Player Name </h2>
+      
+      <div class="icon">
+        <i class="fas fa-plus-circle"></i>
+      </div>
+      <div class="health">
+        <div id="health-bar"></div>
+        <div id="health-points"> 75 / 100 HP </div>
+      </div>
+    </div>
+
+    <div class="level-info">
+      <div id="level"> 3 </div>
+      <div class="health">
+        <div id="health-bar"></div>
+        <div id="health-points"> 75 / 100 HP </div>
+      </div>
+    </div>
+
+    
+    <div class="map-info">
+      <div class="point-container">
+        <div class="point" id="a"> A </div>
+        <div class="point" id="b"> B </div>
+        <div class="point" id="c"> C </div>
+      </div>
+      <div class="timer">
+        <div id="timer-bar"></div>
+        <div class="time" id="a"> 3:21 </div>
+        <div class="time" id="b"> 7:19 </div>
+        
+      </div>
+    </div>
+
+    <div class="abilities">
+      <div class="ability cooldown">
+        <i class="fas fa-bolt"></i>
+        <div class="title"> LMB </div>
+      </div>
+      <div class="ability">
+        <i class="fas fa-rocket"></i>
+        <div class="title"> 1 </div>
+      </div>
+      <div class="ability">
+        <i class="fas fa-angle-double-up"></i>
+        <div class="title"> 2 </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="minimap"></div>
   <div class="bar-container">
     <div class="bar health"></div>
     <div class="bar shield"></div>
@@ -29,7 +85,7 @@
       <i class="fas fa-angle-double-up"></i>
       <div class="title"> 2 </div>
     </div>
-  </div>
+  </div> -->
 </body>
 </html>
 
@@ -55,5 +111,6 @@
 <script src="Assets/JS/networking/communication/getInfo.js"></script>
 <script src="Assets/JS/interface/mouse.js"></script>
 <script src="Assets/JS/interface/joystick.js"></script>
+<script src="Assets/JS/interface/keyboard.js"></script>
 <script src="Assets/JS/interface/abilities.js"></script>
 <script src="Assets/JS/main.js"></script>

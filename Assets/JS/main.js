@@ -9,6 +9,7 @@ setInterval(() => {
 
   var now = Date.now();
   var deltaTime = now - lastUpdate;
+  
   lastUpdate = now;
   
 

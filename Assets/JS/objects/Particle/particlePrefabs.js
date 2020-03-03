@@ -17,7 +17,9 @@ particlePrefab = {
     look: {
       stroke: "#ffffff",
       closePath: false,
-      lineWidth: 5
+      lineWidth: 10,
+      shadowColor: "#37CFFF",
+      shadowBlur: 20
     }
   },
 
