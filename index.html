@@ -16,7 +16,7 @@
 
   <div class="interface">
     <div class="player-info">
-      <h2> Player Name </h2>
+      <h2 id="name"> Player Name </h2>
       
       <div class="icon">
         <i class="fas fa-plus-circle"></i>
@@ -29,9 +29,9 @@
 
     <div class="level-info">
       <div id="level"> 3 </div>
-      <div class="health">
-        <div id="health-bar"></div>
-        <div id="health-points"> 75 / 100 HP </div>
+      <div class="experience">
+        <div id="experience-bar"></div>
+        <div id="experience-points"> 75 / 100 HP </div>
       </div>
     </div>
 
@@ -66,31 +66,12 @@
     </div>
 
   </div>
-
-  <!-- <div class="minimap"></div>
-  <div class="bar-container">
-    <div class="bar health"></div>
-    <div class="bar shield"></div>
-  </div>
-  <div class="ability-container">
-    <div class="ability cooldown">
-      <i class="fas fa-bolt"></i>
-      <div class="title"> LMB </div>
-    </div>
-    <div class="ability">
-      <i class="fas fa-rocket"></i>
-      <div class="title"> 1 </div>
-    </div>
-    <div class="ability">
-      <i class="fas fa-angle-double-up"></i>
-      <div class="title"> 2 </div>
-    </div>
-  </div> -->
 </body>
 </html>
 
 
 <script src="Assets/JS/interface/canvas.js"></script>
+<script src="Assets/JS/interface/interfaceValues.js"></script>
 <script src="Assets/JS/engine/JSONParser.js"></script>
 <script src="Assets/JS/networking/buffers/meshBuffer.js"></script>
 <script src="Assets/JS/Camera/camera.js"></script>

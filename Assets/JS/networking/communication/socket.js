@@ -3,6 +3,8 @@ var socket = io.connect('http://172.20.10.3:3000');
 
 var playerID = Math.floor(Math.random() * 100000);
 
+interface.name.textContent = playerID;
+
 socket.emit('Login', playerID);
 
 

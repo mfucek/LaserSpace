@@ -20,7 +20,8 @@ class ParticleEntity extends Entity {
 
 particleObjects = {
   explosions: [],
-  zaps: []
+  zaps: [],
+  other: []
 }
 
 function particleUpdate() {

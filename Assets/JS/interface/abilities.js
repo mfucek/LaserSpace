@@ -31,6 +31,7 @@ function checkAbilities() {
           }
         })
       );
+      
       cooldowns['1'] = true;
       setTimeout( () => {
         cooldowns['1'] = false;

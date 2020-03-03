@@ -101,10 +101,10 @@ canvas {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
-.interface .level-info .health {
+.interface .level-info .experience {
   display: inline-block;
 }
-.interface .level-info .health #health-bar {
+.interface .level-info .experience #experience-bar {
   height: 12px;
   width: 240px;
   background: #37CFFF;
