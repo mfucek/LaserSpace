@@ -1,9 +1,7 @@
 // http://172.20.10.3:3000
 // http://192.168.8.101
 
-const socket = io.connect("https://laserspaceserver.herokuapp.com/", {
-  port: 46367
-});
+const socket = io.connect("https://laserspaceserver.herokuapp.com/");
 
 socket.on("connect", e => {
   console.log("connected", e);
