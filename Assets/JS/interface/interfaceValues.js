@@ -1,4 +1,5 @@
 var interface = {
+  root: document.querySelector(".interface"),
   health: document.querySelector("#health-points"),
   name: document.querySelector("#name"),
   level: document.querySelector("#level"),

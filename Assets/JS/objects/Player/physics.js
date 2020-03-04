@@ -17,6 +17,10 @@ function testCollisions(obj1, obj2) {
     // console.log(obj1.intensity);
     
     if ( obj1.intensity > 8 ) {
+      interface.root.classList.add("shake");
+      setTimeout(() => {
+        interface.root.classList.remove("shake");        
+      }, 500);
       particleObjects.explosions.push(
         particlePrefab.create("collisionExplosion", {
           x: ( obj1.x + obj2.x ) / 2,
