@@ -1,12 +1,40 @@
+// http://172.20.10.3:3000
+// http://192.168.8.101
 
-var socket = io.connect('http://172.20.10.3:3000');
+const socket = io.connect("https://laserspaceserver.herokuapp.com/", {
+  port: 46367
+});
+
+socket.on("connect", e => {
+  console.log("connected", e);
+});
 
 var playerID = Math.floor(Math.random() * 100000);
 
 interface.name.textContent = playerID;
 
 socket.emit('Login', playerID);
+socket.emit('Heartbeat', playerID)
 
+
+var agg = setInterval(heartbeat, 1000);
+
+function heartbeat() {
+  socket.emit('Heartbeat', playerID)
+}
+
+socket.on("Disconnect", (msg) => {
+  
+  particleObjects.explosions.push(
+    particlePrefab.create("collisionExplosion", {
+      x: ( otherPlayers[msg].x ),
+      y: ( otherPlayers[msg].y ),
+      // later calculate actual point of collision!
+    })
+  );
+  delete otherPlayers[msg]
+  console.log("someone left 😢");
+})
 
 
 otherPlayers = {};

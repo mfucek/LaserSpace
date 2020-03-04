@@ -20,7 +20,7 @@ function checkAbilities() {
     if (cooldowns['1'] == false) {
 
       var angle = - Math.atan2( Player.y - Cursor.y, Player.x - Cursor.x )
-      console.log(angle);
+      // console.log(angle);
       
 
       particleObjects.zaps.push(
