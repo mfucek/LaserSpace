@@ -1,19 +1,26 @@
+import { meshBuffer } from "../../networking/buffers/meshBuffer"
 
-particlePrefab = {
+import { ParticleEntity } from "../Particle/particle"
+import { Entity } from "../Entity/entity"
+
+var particlePrefab = {
 
   collisionExplosion: {
-    duration: 20,
-    mesh: meshBuffer['circle'],
+    particleType: "explosion",
+    duration: 200,
+    mesh: meshBuffer.circle,
     look: {
-      stroke: "#ffffff"
+      stroke: "#ffffff",
+      lineWidth: 1
     }
   },
 
   zap: {
+    particleType: "zap",
     x: 0,
     y: 0,
-    duration: 10,
-    mesh: meshBuffer['circle'],
+    duration: 200,
+    mesh: meshBuffer.circle,
     look: {
       stroke: "#ffffff",
       closePath: false,
@@ -24,8 +31,16 @@ particlePrefab = {
   },
 
   create : function(obj, optional) {
+    
     var r = new ParticleEntity( { ...this[obj], ...optional } );    
-    r.initialTime = time;
+    r.initialTime = performance.now();
+
+    // console.log("Particle created from prefab " + obj);
+    
     return r
   }
 }
+
+// window.particlePrefab = particlePrefab;
+
+export { particlePrefab };

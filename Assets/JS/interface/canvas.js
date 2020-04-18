@@ -1,4 +1,3 @@
-
 var c = document.querySelector("#myCanvas");
 var ctx = c.getContext("2d");
 
@@ -12,3 +11,9 @@ var offset = {
 
 var initialWidth = window.innerWidth;
 var initialHeight = window.innerHeight;
+
+c.oncontextmenu = new Function("return false;");
+
+console.log("Canvas initialized.")
+
+export { c, ctx, offset, initialHeight, initialWidth };

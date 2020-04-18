@@ -1,0 +1,21 @@
+
+  .interface .player-info h2 {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 0 20px 0;
+  }
+  .interface .player-info .icon {
+    display: inline-block;
+    font-size: 32px;
+    margin-right: 12px;
+  }
+  .interface .player-info .health {
+    display: inline-block;
+  }
+  .interface .player-info .health #health-bar {
+    height: 12px;
+    width: 240px;
+    background: #37CFFF;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }

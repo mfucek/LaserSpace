@@ -3,6 +3,8 @@ class Entity {
   constructor(optional) {
     var optional = optional || {};
 
+    this.type = optional.type || "Entity";
+
     this.label = optional.label || "";
 
     // Position
@@ -32,6 +34,8 @@ class Entity {
       stroke: undefined,
       dash: undefined,
       lineWidth: undefined,
+      shadowColor: undefined,
+      shadowBlur: undefined
     }
 
     // Transform
@@ -71,6 +75,15 @@ class Entity {
       v[2] *= this.transform.scale
     });
 
+    // parent offset
+    if (this.parent != undefined) {
+      mesh2.vertices.forEach(v => {
+        v[0] -= this.parent.x,
+        v[1] += this.parent.y,
+        v[2] += this.parent.z
+      });
+    }
+
     // transform (rotation)
     var g = Math.PI / 2
     var rt = {
@@ -105,10 +118,6 @@ class Entity {
       v[2] += this.z;
     });
 
-    if (this.parent != undefined) {
-      console.log(ä);
-      
-    }
     // console.log(mesh2.vertices[0]);
     return mesh2;
   }
@@ -124,9 +133,9 @@ class Entity {
     this.intensity = Math.round( Math.hypot(x, y) * 10) / 10;
   }
 
-  updatePosition() {
-    this.x += Math.cos(this.direction) * this.intensity;
-    this.y += Math.sin(this.direction) * this.intensity;
+  updatePosition(deltaTime) {
+    this.x += Math.cos(this.direction) * this.intensity // * deltaTime / 16;
+    this.y += Math.sin(this.direction) * this.intensity // * deltaTime / 16;
   }
 
   speedLimit() {
@@ -138,12 +147,14 @@ class Entity {
     }
   }
 
-  friction() {
+  friction(deltaTime) {
     if (this.intensity > 0) {
-      this.intensity = this.intensity - this.frictionIntensity;
+      this.intensity = this.intensity - this.frictionIntensity // * deltaTime / 16;
     }
     if (Math.abs(this.intensity) < 0.1) {
       this.intensity = 0;
     }
   }
 };
+
+export { Entity };

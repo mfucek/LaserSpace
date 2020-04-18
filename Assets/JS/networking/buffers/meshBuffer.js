@@ -1,8 +1,10 @@
 
-meshBuffer = {
-  meteor: readJson('Assets/OBJ/meteor.json'),
-  wreck: readJson('Assets/OBJ/wreck.json'),
-  ship: readJson('Assets/OBJ/ship.json'),
-  capture: readJson('Assets/OBJ/capture.json'),
-  circle: readJson('Assets/OBJ/circle.json')
-}
+var meshBuffer = {}
+
+meshBuffer.meteor = require("../../../OBJ/meteor");
+meshBuffer.wreck = require("../../../OBJ/wreck");
+meshBuffer.ship = require("../../../OBJ/ship");
+meshBuffer.capture = require("../../../OBJ/capture");
+meshBuffer.circle = require("../../../OBJ/circle");
+
+export { meshBuffer }

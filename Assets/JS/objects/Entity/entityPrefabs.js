@@ -1,5 +1,8 @@
+import { meshBuffer } from "../../networking/buffers/meshBuffer"
 
-entityPrefab = {
+import { Entity } from "../Entity/entity";
+
+var entityPrefab = {
 
   meteor: {
     mesh: meshBuffer.meteor,
@@ -20,7 +23,7 @@ entityPrefab = {
     mesh: meshBuffer.ship,
     look: {
       stroke: "#ffffff",
-      fill: "#ffffff20"
+      fill: "#ffffff20",
     },
     transform: {
       scale: 0.5,
@@ -33,3 +36,7 @@ entityPrefab = {
     return r
   }
 }
+
+// window.entityPrefab = entityPrefab;
+
+export { entityPrefab };

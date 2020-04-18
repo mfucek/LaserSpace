@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/mfucek/LaserSpace#readme",
   "dependencies": {
+    "interface": "^1.2.1",
+    "jsx": "^0.9.89",
     "parcel": "^1.12.4",
     "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "sass": "^1.26.3"
   }
 }

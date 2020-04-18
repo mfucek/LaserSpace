@@ -1,0 +1,56 @@
+
+.ability {
+    position: relative;
+  
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    margin-right: 20px;
+    
+    box-shadow: 0 4px 0 #00000040;
+    transition-duration: 0.1s;
+    transition-timing-function: cubic-bezier(0.5, 0, 0.33, 2.33);
+  
+    color: #000000;
+    line-height: 48px;
+    text-align: center;
+    font-size: 24px;
+  }
+  .ability:last-child {margin-right: 0;}
+  
+  .ability.pressed {
+    box-shadow: 0 -4px 0 #00000080;
+    opacity: 0.75;
+    /* background-color: #101010; */
+    transform: translateY(4px);
+    transition-timing-function: cubic-bezier(0.5, 0, 0.33, 1);
+  }
+  
+  .ability.cooldown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000080;
+    animation: linear 0.5s cooldown;
+  }
+  
+@keyframes cooldown {
+    0% {top: 0%}
+    100% {top: 100%}
+  }
+  
+  .ability .title {
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 38px;
+    color: #ffffff;
+  }

@@ -1,22 +1,42 @@
-function render(objects, collisions) {
+import { entityHierarchy } from "../objects/entityHierarchy";
+
+import { c, ctx, initialHeight, initialWidth } from "../interface/canvas";
+
+import { drawCircle, drawSegment, drawText, drawCircleUnzoomed } from "./drawing";
+
+import { getCursor } from "../input/mouse";
+
+import { debug } from "../debug";
+
+window.collisions = false;
+
+function render() {
+
+  c.width = c.width; // CLS
   
   // FIX THIS!!
-  sW = window.innerWidth / initialWidth;
-  sH = window.innerHeight / initialHeight;
-  tW = 0//-( window.innerWidth - initialWidth ) / 2;
-  tH = 0//-( window.innerHeight - initialHeight ) / 2;
-  sQ = Math.max(sW, sH)
+  var sW = window.innerWidth / initialWidth;
+  var sH = window.innerHeight / initialHeight;
+  var tW = 0//-( window.innerWidth - initialWidth ) / 2;
+  var tH = 0//-( window.innerHeight - initialHeight ) / 2;
+  var sQ = Math.max(sW, sH)
   ctx.transform(sH, 0, 0, sW, tW, tW);
   
-  (objects).forEach(element => {
 
-    // LABEL HANDLING
-        
+  
+  var sortedEntityHierarchy = [...entityHierarchy].sort((a, b) => (a.z > b.z) ? 1 : -1);
+  (sortedEntityHierarchy).forEach(element => {
+
+    // LABEL HANDLING        
     if (element.label) {      
-      drawText(element.label, [element.x, element.y, element.z])
+      if (element.parent != undefined) {
+        drawText(element.label, [element.x + element.parent.x, element.y + element.parent.y, element.z + element.parent.z])
+      } else {
+        drawText(element.label, [element.x, element.y, element.z])
+      }
     }
     
-    e = element.getMesh();
+    var e = element.getMesh();    
 
     // CIRCLE HANDLING
     if (e.circles) {    
@@ -50,84 +70,24 @@ function render(objects, collisions) {
     }
 
     // COLLISION RENDERING
-    if (collisions & element.physics.solid == true ) {
+    if (debug.physicsBoundary & element.physics.solid == true ) {
       drawCircle( [element.x, element.y, element.z], element.physics.collisionRadius, {stroke: "#ff0000"}, true)
     }
   });
-}
 
-
-// dash ne radi
-
-function drawText(text, vert) {
-  var p = projectVertex(vert, Camera);
-  ctx.font = "12px Fredoka One";
-  ctx.fillStyle = "#ffffff";
-  ctx.textAlign = "center";
-  ctx.fillText(text, p.x, p.y - 30);
-}
-
-function drawCircle(vert, size, look) {
-  strokeColor = look.stroke;
-  fillColor = look.fill;
-  lineWidth = look.lineWidth || [1];
-  ctx.setLineDash(look.dash || []);      
-  ctx.beginPath();
-  var p = projectVertex(vert, Camera);
-  ctx.arc(
-    p.x,
-    p.y,
-    size * Camera.zoom / 10,
-    0,
-    2 * Math.PI
-  );
-  ctx.fillStyle = fillColor;
-  ctx.strokeStyle = strokeColor;
-  if (fillColor) {ctx.fill()}
-  ctx.lineWidth = lineWidth * Camera.zoom / 10;
-  ctx.stroke();  
-}
-
-function drawSegment(vertList, look) {
-  strokeColor = look.stroke;
-  fillColor = look.fill;
-  lineWidth = look.lineWidth || [1];
-  shadowColor = look.shadowColor || undefined;
-  shadowBlur = look.shadowBlur || undefined;
-  ctx.setLineDash(look.dash || []);   
-  // TODO opacity handling
-  // get current stroke/fill opacity [7,8], median with opacity
-  n = 0;  
-  ctx.beginPath();  
-  vertList.forEach(vert => {
-    n += 1;    
-    p = projectVertex(vert, Camera);
-    if (n == 1) {
-      ctx.moveTo( p.x, p.y );
-    } else {
-      ctx.lineTo( p.x, p.y );
-    }
-  });
-  if (look.closePath != false) { ctx.closePath(); }
-  ctx.strokeStyle = strokeColor;
-  if (fillColor) {
-    ctx.fillStyle = fillColor;
-    if (look.closePath != false) { ctx.closePath(); }
-    ctx.fill();
-  }
-  ctx.lineWidth = lineWidth * Camera.zoom / 10;
-  ctx.shadowBlur = shadowBlur * Camera.zoom / 10;
-  ctx.shadowColor = shadowColor;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  ctx.stroke();
+  // CURSOR DRAWING
+  var Cursor = getCursor();
+  drawCircleUnzoomed( [Cursor.x, Cursor.y, 0], 6, {stroke: "#ffffff"} );
 }
 
 
 function mapVertices(referenceList, vertList) {
-  newList = []
+  let newList = []
   referenceList.forEach(element => {
     newList.push( vertList[element] );
   });
   return newList;
 }
+
+
+export { render };

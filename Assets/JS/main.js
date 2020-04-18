@@ -1,80 +1,66 @@
+import { } from "./interface/canvas";
+import { } from "./interface/userInterface";
+import { updateTooltip, initAbilityFunctions } from "./interface/tooltip"
 
-// Main Cycle
+import { render } from "./engine/renderer";
+import { Camera } from "./camera/camera";
+import { updatePlayer, initPlayer } from "./objects/Player/player";
+import { placeLevel } from "./objects/Entity/placeLevel";
 
-var lastUpdate = Date.now();
+import { initMouse } from "./input/mouse";
 
-var time = 0
-setInterval(() => {
-  time += 1
+import { updateAbilities } from "./interface/abilities"
+import { } from "./interface/skilltree"
+import { updateInterface } from "./interface/userInterface"
 
-  var now = Date.now();
-  var deltaTime = now - lastUpdate;
+import { updatePhysics } from "./objects/Player/physics";
+import { updateParticles } from "./objects/Particle/particle";
+import { updateAnimations } from "./engine/effectRenderer";
+
+
+function update(deltaTime) {
+  // console.log( deltaTime );
+
+  updateAbilities();
+  updateInterface();
+
+  updatePlayer(deltaTime);
+  updatePhysics();
+  Camera.adjust();
+
   
-  lastUpdate = now;
+  updateAnimations();
+
+  updateParticles();
+  
+}
+
+function loop(timestamp) {
+  var deltaTime = performance.now() - lastTime;
+
+  // console.log( 1000 / deltaTime);
   
 
-  // PLAYER MOVEMENT
-  Player.friction();
-  checkMovement();
-  Player.speedLimit();
-  Player.updatePosition();
+  update(deltaTime);
 
-  // CAMERA ADJUSTING
-  Camera.adjust(Player);
+  render();
 
-  // PHYSICS
-  ambientObjects.forEach(e => {
-    if (e.physics.solid == true & Player != e) {
-      testCollisions(Player, e);
-    }
-  });
+  lastTime = performance.now();
+  window.requestAnimationFrame(loop);
+}
 
-  animationUpdate();
+initPlayer();
+placeLevel();
 
-  // PARTICLE HANDLING
-  particleUpdate();
+initMouse();
 
-  // ANIMATION HANDLING
-  animation(ambientObjects);
+var lastTime = 0;
+window.requestAnimationFrame(loop);
 
-  // RENDERING
-  c.width = c.width; // CLS
-  render(ambientObjects, false);
-  Object.entries(particleObjects).forEach(particleList => {    
-    render(particleList[1], false)
-  });
 
-  if (Object.entries(otherPlayers).length != 0) {
-    // if not only player in server
-    // console.log(otherPlayers);
-    // Object.entries(otherPlayers)[0][1]
-    Object.entries(otherPlayers).forEach(p => {
-      render( [ p[1] ] )
-    });
-        
-    // render(otherPlayers, true);
 
-  }
-
-  // INTERFACE
-  checkAbilities();
-
-  // CURSOR
-  updateCursor(c);
-  updateJoystick(c);
-
-  // NETWORK
-  if (time == 1 | Player.intensity > 0) {
-    giveInfo();
-  }
-
-}, 20);
-
+//
 
 // TODO
-// player names?
-// main loop cleanup - too much clutter
-
-
-// https://playground.babylonjs.com/#QFRJ7K#9
-// https://forum.babylonjs.com/t/fps-affects-game-speed-framerate-independence/2419
+// - canvas resize
+//   - https://www.sitepoint.com/quick-tip-game-loop-in-javascript/

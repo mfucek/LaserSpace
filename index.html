@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="Assets/CSS/style.css">
+  <link rel="stylesheet" href="Assets/CSS/style.scss">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
 
 <html>
 <body>
+
   <canvas id="myCanvas"></canvas>
 
   <div class="interface">
@@ -66,32 +67,24 @@
     </div>
 
   </div>
+
+  <div class="overlay hidden">
+    <div class="close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="menu">
+      <a class="active" > Endurance </a>
+      <a> Firepower </a>
+      <a> Agility </a>
+    </div>
+    <div class="talent-area">
+      <div class="skill-tree">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 
 
-<script src="Assets/JS/interface/canvas.js"></script>
-<script src="Assets/JS/interface/interfaceValues.js"></script>
-<script src="Assets/JS/engine/JSONParser.js"></script>
-<script src="Assets/JS/networking/buffers/meshBuffer.js"></script>
-<script src="Assets/JS/camera/camera.js"></script>
-<script src="Assets/JS/objects/Entity/entity.js"></script>
-<script src="Assets/JS/objects/Player/player.js"></script>
-<script src="Assets/JS/objects/Particle/particle.js"></script>
-<script src="Assets/JS/objects/Particle/particlePrefabs.js"></script>
-<script src="Assets/JS/objects/Player/movement.js"></script>
-<script src="Assets/JS/objects/Player/physics.js"></script>
-<script src="Assets/JS/objects/Entity/entityPrefabs.js"></script>
-<script src="Assets/JS/objects/Entity/ambience.js"></script>
-<script src="Assets/JS/engine/projection.js"></script>
-<script src="Assets/JS/engine/effectRenderer.js"></script>
-<script src="Assets/JS/engine/renderer.js"></script>
-<script src="Assets/JS/engine/animation.js"></script>
-<script src="Assets/JS/networking/communication/socket.js"></script>
-<script src="Assets/JS/networking/communication/giveInfo.js"></script>
-<script src="Assets/JS/networking/communication/getInfo.js"></script>
-<script src="Assets/JS/interface/mouse.js"></script>
-<script src="Assets/JS/interface/joystick.js"></script>
-<script src="Assets/JS/interface/keyboard.js"></script>
-<script src="Assets/JS/interface/abilities.js"></script>
+
 <script src="Assets/JS/main.js"></script>

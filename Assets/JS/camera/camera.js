@@ -1,4 +1,3 @@
-// CAMERA OBJECT
 var Camera = {
   x: 0,
   y: 0,
@@ -23,20 +22,24 @@ var Camera = {
 }
 
 // ZOOM
-lastScroll = 0;
+var lastScroll = 0;
 window.addEventListener('wheel', function(event) {
-  if (time - lastScroll > 0 ) {
+  if (Date.now() - lastScroll > 0 ) {
     if (event.deltaY < 0) {
       if (Camera.zoomTarget < 20) {
         Camera.zoomTarget += 2;
       }
-      lastScroll = time;
+      lastScroll = Date.now();
     }
     else if (event.deltaY > 0) {
       if (Camera.zoomTarget > 3) {
         Camera.zoomTarget -= 2;
       }
-      lastScroll = time;
+      lastScroll = Date.now();
     }
   }
 });
+
+window.Camera = Camera;
+
+export { Camera };

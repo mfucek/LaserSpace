@@ -1,0 +1,97 @@
+@import './abilities.scss';
+@import './overlay.scss';
+@import './objectives.scss';
+@import './player.scss';
+@import './level.scss';
+@import './skilltree.scss';
+@import './tooltip.scss';
+
+
+body {
+  background-color: #181818;
+  overflow: hidden;
+  font-family: Fredoka One;
+  user-select: none;
+}
+
+:root {
+  --hide: 0.05;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: 100vh;
+  width: 100vw;
+
+  cursor: none;
+}
+
+.interface {
+  position: absolute;
+  top: 80px;
+  bottom: 80px;
+  left: 50%;
+  width: calc( 100vw - 160px );
+  max-width: calc( 16 * 100vh / 9 );
+  transform: translateX(-50%);
+  /* border: 1px solid red; */
+  color: white;
+  font-family: Fredoka One;
+  font-style: normal;
+  font-weight: normal;
+  pointer-events: none;
+}
+
+.shake {
+  animation: ease-in-out 0.5s shake;
+}
+
+@keyframes shake {
+  0% { transform: translate(calc( -50% + 3px), 1px) rotate(0deg); }
+  10% { transform: translate(calc( -50% + -1px), -2px) rotate(-0.1deg); }
+  20% { transform: translate(calc( -50% + -3px), 0px) rotate(0.1deg); }
+  30% { transform: translate(calc( -50% + 3px), 2px) rotate(0deg); }
+  40% { transform: translate(calc( -50% + 1px), -1px) rotate(0.1deg); }
+  50% { transform: translate(calc( -50% + -1px), 2px) rotate(-0.1deg); }
+  60% { transform: translate(calc( -50% + -3px), 1px) rotate(0deg); }
+  70% { transform: translate(calc( -50% + 3px), 1px) rotate(-0.1deg); }
+  80% { transform: translate(calc( -50% + -1px), -1px) rotate(0.1deg); }
+  90% { transform: translate(calc( -50% + 1px), 2px) rotate(0deg); }
+  100% { transform: translate(calc( -50% + 0px), 0px) rotate(-0.1deg); }
+}
+
+
+
+.interface .player-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+.interface .level-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+.interface .map-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+
+.abilities {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}

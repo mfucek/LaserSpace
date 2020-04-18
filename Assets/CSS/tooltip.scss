@@ -1,0 +1,37 @@
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(10px, -50%);
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #FFFFFF;
+
+  width: 200px;
+
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+
+  font-family: Fredoka One;
+  font-style: normal;
+  font-weight: normal;
+
+  .title {
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+    margin: 0;
+  }
+  .subtitle {
+    font-size: 8px;
+    line-height: 16px;
+    color: #FF0000;
+    margin: 0 0 12px 0;
+  }
+  .description {
+    font-size: 8px;
+    line-height: 12px;
+    color: #ffffff80;
+  }
+}

@@ -1,0 +1,43 @@
+
+.interface .map-info .point-container {
+    margin-bottom: 24px;
+  }
+  .interface .map-info .point-container .point {
+    display: inline-block;
+    font-size: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    background: #37CFFF;  
+    color: #000000;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin-right: 32px;
+  }
+  .interface .map-info .point-container .point:last-child {
+    margin-right: 0;
+  }
+  .interface .map-info .timer {
+    position: relative;
+  }
+  .interface .map-info .timer #timer-bar {
+    height: 12px;
+    width: 100%;
+    background: #37CFFF;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .interface .map-info .timer .time {
+    position: absolute;
+    font-size: 12px;
+    line-height: 16px;
+    top: 20px;
+  }
+  .interface .map-info .timer .time#a {
+    left: 0;
+  }
+  .interface .map-info .timer .time#b {
+    right: 0;
+  }

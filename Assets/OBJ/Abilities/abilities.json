@@ -1,0 +1,277 @@
+
+{
+
+  "0": {
+    "name": "Zap",
+    "description": "Shoot a short laser burst in a direction.",
+    "icon": "bolt",
+    "cooldown": "3000"
+  },
+  
+  "1": {
+    "name": "Barrage",
+    "description": "Overclock the ship laser allowing for &0 to shoot twice in a row.",
+    "icon": "certificate",
+    "cooldown": ""
+  },
+  
+  "2": {
+    "name": "Mortar",
+    "description": "Shoot a slow moving projectile that damages all ships in a radius.",
+    "icon": "crosshairs",
+    "cooldown": "10000"
+  },
+  
+  "3": {
+    "name": "Drone",
+    "description": "Construct a drone that follows you and attacks nearby enemies.",
+    "icon": "plane",
+    "cooldown": "20000"
+  },
+  
+  "4": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "5": {
+    "name": "Nanite Field",
+    "description": "Deploy a repair field for all friendly units.",
+    "icon": "vector-square",
+    "cooldown": ""
+  },
+  
+  "6": {
+    "name": "Energy Barrier",
+    "description": "Deploy an energy barrier that redirects all incoming damage to you. (80% reduced)",
+    "icon": "braille",
+    "cooldown": ""
+  },
+  
+  "7": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "8": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "9": {
+    "name": "Hyperspeed",
+    "description": "Briefly overclock your engine and ramp up your maximum velocity.",
+    "icon": "random",
+    "cooldown": ""
+  },
+  
+  "10": {
+    "name": "Teleport",
+    "description": "Travel through Subspace and appear in a selected destination.",
+    "icon": "dot-circle",
+    "cooldown": ""
+  },
+  
+  "11": {
+    "name": "Dampening Field",
+    "description": "Slows all enemies inside the field",
+    "icon": "vector-square",
+    "cooldown": ""
+  },
+  
+  "12": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "13": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "14": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "15": {
+    "name": "Conduit Plating",
+    "description": "Improve shield durability, increasing your HP by 10",
+    "icon": "plus-circle",
+    "cooldown": ""
+  },
+  
+  "16": {
+    "name": "Repairing",
+    "description": "Your ship is under repair.",
+    "icon": "wrench",
+    "cooldown": ""
+  },
+  
+  "17": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "18": {
+    "name": "Focusing Optics",
+    "description": "Upgrade your laser optics, allowing your &0 to be accurate at a longer distance",
+    "icon": "drafting-compass",
+    "cooldown": ""
+  },
+  
+  "19": {
+    "name": "Power increase",
+    "description": "Increase your base damage by 10.",
+    "icon": "compress",
+    "cooldown": ""
+  },
+  
+  "20": {
+    "name": "",
+    "description": "Increase your base speed.",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "21": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "22": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "23": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "24": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "25": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "26": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "27": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "28": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "29": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "30": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "31": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "32": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "33": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "34": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "35": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "36": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "37": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+  "38": {
+    "name": "",
+    "description": "",
+    "icon": "",
+    "cooldown": ""
+  },
+  
+}
