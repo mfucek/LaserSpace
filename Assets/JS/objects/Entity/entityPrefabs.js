@@ -41,9 +41,6 @@ var entityPrefab = {
     transform: {
       scale: 1,
       rotation: [0,0,0]
-    },
-    animations: {
-      phase: true
     }
   },
 

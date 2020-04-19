@@ -80,12 +80,47 @@ function placeLevel() {
       y: 200
     })
   );
+  entityHierarchy.push(
+    entityPrefab.create("meteor", {
+      x: -510, 
+      y: 430
+    })
+  );
+  entityHierarchy.push(
+    entityPrefab.create("meteor", {
+      x: 500, 
+      y: -600
+    })
+  );
 
   // Capture Points
   entityHierarchy.push(
     entityPrefab.create("capture", {
+      x: -1000, 
+      y: 0,
+      look: {
+        stroke: "#ff0000",
+        fill: "#ff000020"
+      }
+    })
+  );
+  entityHierarchy.push(
+    entityPrefab.create("capture", {
       x: 0, 
-      y: 0
+      y: 0,
+      animations: {
+        phase: true
+      }
+    })
+  );
+  entityHierarchy.push(
+    entityPrefab.create("capture", {
+      x: 1000, 
+      y: 0,
+      look: {
+        stroke: "#37CFFF",
+        fill: "#37CFFF20"
+      }
     })
   );
   
