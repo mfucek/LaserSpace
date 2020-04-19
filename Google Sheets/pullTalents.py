@@ -15,22 +15,30 @@ a = """
 {
 """
 
-count = 0
 
 for y in range(1, 9):
+  a += """
+  "%s": {
+  """ % (y)
+
   row = sheet.row_values(y * 2 - 1)
   for x in range(len(row)-1):
     if (row[x] != ""):
-      count += 1
       a += """
-  "%s": {
-    "abilityID": "%s",
-    "parentID": [%s],
-    "col": "%s",
-    "row": "%s"
+    "%s": {
+      "abilityID": "%s",
+      "parentID": [%s]
+    },""" % (
+    x + 1,
+    row[x],
+    '"' + sheet.cell(y * 2, x + 1).value.replace(",", '", "') + '"'
+    )
+
+  a += """
   },
-""" % (count, row[x], '"' + sheet.cell(y * 2, x + 1).value.replace(",", '", "') + '"', x, y)
-      print(a)
+  """
+
+
 
 a += """
 }
@@ -40,5 +48,3 @@ print(a)
 
 f.write(a)
 f.close()
-
-# Should make it sort by row!!!

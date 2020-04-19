@@ -1,5 +1,6 @@
 
 abilityList = require("../../OBJ/Abilities/abilities.json");
+talentList = require("../../OBJ/Abilities/talents.json");
 
 
 var skillTree = document.querySelector('.skill-tree');
@@ -24,16 +25,28 @@ function createRow(ids) {
 }
 
 // <!-- <div class="tooltip">
-//                 <div class="title"> ARMOR PLATING </div>
-//                 <div class="subtitle"> REQUIRES PLASMA CORE </div>
-//                 <div class="description"> Your damage weakens the target, increasing physical damage taken by 5%. </div>
-//               </div> -->
+//   <div class="title"> ARMOR PLATING </div>
+//   <div class="subtitle"> REQUIRES PLASMA CORE </div>
+//   <div class="description"> Your damage weakens the target, increasing physical damage taken by 5%. </div>
+// </div> -->
 
 
+Object.keys(talentList).forEach(row => {
 
-skillTree.appendChild(createRow(["0", "1", "0", "", "0", "1", "0"]));
-skillTree.appendChild(createRow(["", "", "", "1", "", "", ""]));
-skillTree.appendChild(createRow(["", "", "0", "", "0", "", ""]));
-skillTree.appendChild(createRow(["", "", "", "1", "", "", ""]));
+  var a = []
+  for (let col = 1; col <= 8; col++) {
+    if (talentList[row][col] != undefined) {
+      a.push(talentList[row][col].abilityID);
+    } else {
+      a.push("");
+    }
+    
+  }skillTree.appendChild(createRow(a));
+
+  // Object.keys(talentList[row]).forEach(col => {
+  //   console.log(row, col);
+    
+  // });  
+});
 
 console.log(skillTree);
