@@ -42,7 +42,7 @@ function initPlayer() {
   entityHierarchy.push(
     new Entity({
       mesh: meshBuffer.circle,
-      look: {stroke: "#37CFFF20", lineWidth: 1},
+      look: {stroke: "#37CFFF40", lineWidth: 1},
       transform: { 
         scale: 2,
         rotation: [0, 0, 0]},

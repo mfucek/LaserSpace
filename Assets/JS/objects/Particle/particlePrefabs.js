@@ -30,9 +30,29 @@ var particlePrefab = {
     }
   },
 
+  areaOfEffectFriendly: {
+    z: -15,
+    duration: 10000,
+    mesh: meshBuffer.circle,
+    look: {
+      stroke: "#ffffff",
+      fill: "#37CFFF20",
+      lineWidth: 4,
+      shadowColor: "#37CFFF",
+      shadowBlur: 20
+    },
+    transform: {
+      scale: 4,
+      rotation: [0,0,0]
+    },
+    animations: {
+      pop: [1000, 100]
+    }
+  },
+
   create : function(obj, optional) {
     
-    var r = new ParticleEntity( { ...this[obj], ...optional } );    
+    var r = new ParticleEntity( JSON.parse(JSON.stringify({ ...this[obj], ...optional })) );    
     r.initialTime = performance.now();
 
     // console.log("Particle created from prefab " + obj);

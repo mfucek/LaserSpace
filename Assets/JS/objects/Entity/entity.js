@@ -1,6 +1,8 @@
-
+let count = 0;
 class Entity {
   constructor(optional) {
+    this.uniqueId = count++;
+
     var optional = optional || {};
 
     this.type = optional.type || "Entity";
@@ -44,13 +46,7 @@ class Entity {
       rotation: [0, 0, 0]
     }
 
-    this.animations = optional.animations || {
-      spin: false
-    }
-
-    if (this.animations.spin) {
-      this.transform.rotation = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2 ]
-    }
+    this.animations = optional.animations || undefined;
 
     // Physics
     this.physics = optional.physics || {

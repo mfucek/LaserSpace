@@ -1,4 +1,5 @@
 import { entityPrefab } from "./entityPrefabs";
+import { particlePrefab } from "../Particle/particlePrefabs";
 
 import { Entity } from "./entity";
 
@@ -41,7 +42,7 @@ function placeLevel() {
   // Wreck
   entityHierarchy.push(
     new Entity({
-      z: 0,
+      z: -100,
       x: 2000,
       y: -1000,
       mesh: meshBuffer.wreck,
@@ -82,22 +83,12 @@ function placeLevel() {
 
   // Capture Points
   entityHierarchy.push(
-    new Entity({
+    entityPrefab.create("capture", {
       x: 0, 
-      y: 0,  
-      z: -100,  
-      mesh: meshBuffer.capture,
-      look: {
-        stroke: "#ff0000",
-        fill: "#ff000020"
-      },
-      transform: {
-        scale: 1,
-        rotation: [0,0,0]
-      }
+      y: 0
     })
   );
-
+  
 };
 
 

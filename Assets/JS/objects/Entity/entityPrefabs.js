@@ -15,7 +15,7 @@ var entityPrefab = {
       solid: true
     },
     animations: {
-      spin: 0.005
+      spin: 0.02
     }
   },
   
@@ -28,6 +28,22 @@ var entityPrefab = {
     transform: {
       scale: 0.5,
       rotation: [0, 0, 0]
+    }
+  },
+
+  capture: {
+    z: -10,
+    mesh: meshBuffer.capture,
+    look: {
+      stroke: "#ff0000",
+      fill: "#ff000020"
+    },
+    transform: {
+      scale: 1,
+      rotation: [0,0,0]
+    },
+    animations: {
+      phase: true
     }
   },
 

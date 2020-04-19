@@ -57,6 +57,17 @@ function showAbility(id) {
     );
 
   }
+
+  if (id == "1") {
+    let Cursor = getCursor();
+
+    entityHierarchy.push(
+      particlePrefab.create("areaOfEffectFriendly", {
+        x: Cursor.x, 
+        y: Cursor.y
+      })
+    );
+  }
 }
 
 
@@ -81,10 +92,10 @@ function useSelectedSlot() {
   if ( cooldowns[slots[selectedSlot]] == undefined || performance.now() > cooldowns[slots[selectedSlot]] ) {
     
     // request network to perform spell
-    console.log('Requesting to perform', Abilities[slots[selectedSlot]].name);
+    // console.log('Requesting to perform', Abilities[slots[selectedSlot]].name);
     
     // (will happen after network confirms - outside of this function)
-    console.log('Server request, render', Abilities[slots[selectedSlot]].name);
+    // console.log('Server request, render', Abilities[slots[selectedSlot]].name);
     
     showAbility(slots[selectedSlot]);
 
