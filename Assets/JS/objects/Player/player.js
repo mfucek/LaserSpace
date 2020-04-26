@@ -46,6 +46,9 @@ class PlayerEntity extends Entity {
       }
     }
     
+    this.info = {
+      health: 100
+    }
 
     // this.label = "[ Player ]"
   }

@@ -7,6 +7,7 @@ import {entityPrefab} from "../../objects/Entity/entityPrefabs";
 import {ui} from "../../interface/userInterface";
 import { entityHierarchy } from "../../objects/entityHierarchy";
 import { particlePrefab } from "../../objects/Particle/particlePrefabs";
+import { Player } from "../../objects/Player/player";
 
 
 // const socket = io.connect("https://laserspaceserver.herokuapp.com/");
@@ -19,8 +20,14 @@ socket.on("connect", e => {
 
 var playerID = Math.floor(Math.random() * 100000);
 var nickname = playerID + "NICK"
-
 ui.name.innerHTML = nickname
+
+// setTimeout( function() {
+//   nickname = "asd"
+//   ui.name.innerHTML = nickname
+//   Player.nickname
+// }, 5000)
+
 
 var playerList = {};
 
@@ -54,6 +61,13 @@ socket.on("Disconnect", (id) => {
 })
 
 
+socket.on('Command', (msg) => {
+  if (msg.playerID == playerID) {
+    Object.keys(msg.attrs).forEach( attr => {
+      Player[attr] = msg.attrs[attr]
+    })
+  }
+})
 
 socket.on('Sync', (msg) => { 
   
@@ -94,8 +108,10 @@ socket.on('Sync', (msg) => {
       // Sync this player
 
       // console.log(p[1].info);
-
-      ui.health.innerHTML = p[1].info.health + " / 100 HP"
+      // console.log(p[1]);
+      
+      ui.name.innerHTML = nickname + " (team" + Player.info.team + ")"
+      ui.health.innerHTML = Player.info.health + " / " + Player.info.maxHealth + " HP"
       
     }
   });

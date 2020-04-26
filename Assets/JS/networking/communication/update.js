@@ -1,7 +1,7 @@
 import {Player} from "../../objects/Player/player";
 import {socket, playerID, nickname} from "./socket"
 
-function giveInfo() {
+function giveInfo() {  
 
   var info = {
     x: Player.x,
