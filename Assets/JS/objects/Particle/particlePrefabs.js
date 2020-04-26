@@ -4,8 +4,19 @@ import { ParticleEntity } from "../Particle/particle"
 import { Entity } from "../Entity/entity"
 
 var particlePrefab = {
+  create : function(obj, optional) {
+    
+    var r = new ParticleEntity( JSON.parse(JSON.stringify({ ...this[obj], ...optional })) );    
+    r.initialTime = performance.now();
 
-  collisionExplosion: {
+    // console.log("Particle created from prefab " + obj);
+    
+    return r
+  }
+}
+
+function createParticlePrefabs() {
+  particlePrefab.collisionExplosion = {
     particleType: "explosion",
     duration: 200,
     mesh: meshBuffer.circle,
@@ -13,9 +24,9 @@ var particlePrefab = {
       stroke: "#ffffff",
       lineWidth: 1
     }
-  },
+  }
 
-  zap: {
+  particlePrefab.zap = {
     particleType: "zap",
     x: 0,
     y: 0,
@@ -28,9 +39,9 @@ var particlePrefab = {
       shadowColor: "#37CFFF",
       shadowBlur: 20
     }
-  },
+  }
 
-  areaOfEffectFriendly: {
+  particlePrefab.areaOfEffectFriendly = {
     z: -15,
     duration: 10000,
     mesh: meshBuffer.circle,
@@ -48,19 +59,10 @@ var particlePrefab = {
     animations: {
       pop: [1000, 100]
     }
-  },
-
-  create : function(obj, optional) {
-    
-    var r = new ParticleEntity( JSON.parse(JSON.stringify({ ...this[obj], ...optional })) );    
-    r.initialTime = performance.now();
-
-    // console.log("Particle created from prefab " + obj);
-    
-    return r
   }
 }
 
+
 // window.particlePrefab = particlePrefab;
 
-export { particlePrefab };
+export { particlePrefab, createParticlePrefabs };

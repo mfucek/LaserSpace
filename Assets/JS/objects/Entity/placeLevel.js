@@ -1,5 +1,4 @@
 import { entityPrefab } from "./entityPrefabs";
-import { particlePrefab } from "../Particle/particlePrefabs";
 
 import { Entity } from "./entity";
 

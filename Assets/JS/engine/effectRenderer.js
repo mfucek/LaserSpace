@@ -49,7 +49,7 @@ function updateAnimations() {
         
       }
 
-      // POP
+      // POP 
       if (e.animations.pop) {
 
         let c = entityCopy[e.uniqueId];
@@ -69,5 +69,8 @@ function updateAnimations() {
 
   
 }
+
+// prebaciti particle efekte ovuda, zap -> draw
+// neka efekti budu uvjetovani durationom, ako nema duration, onda loop !!
 
 export { updateAnimations };

@@ -1,7 +1,11 @@
 import { keys } from "../input/keyboard";
 import { mouseButtons } from "../input/mouse";
 import { entityHierarchy } from "../objects/entityHierarchy";
+import { Entity } from "../objects/Entity/entity";
 import { particlePrefab } from "../objects/Particle/particlePrefabs";
+import { meshBuffer } from "../networking/buffers/meshBuffer";
+
+import {requestSpell} from "../networking/communication/socketRequest"
 
 import { getCursor } from "../input/mouse"
 import { Player } from "../objects/Player/player"
@@ -41,16 +45,15 @@ import { Player } from "../objects/Player/player"
 //   }  
 // }
 
-function showAbility(id) {
-  if (id == "0") {
-    let Cursor = getCursor();
+function showAbility(spellID, args) {
+  
+  if (spellID == "0") {
     
-      var angle = - Math.atan2( Player.y - Cursor.y, Player.x - Cursor.x )
 
     entityHierarchy.push(
       particlePrefab.create("zap", {
         mesh: {
-          vertices: [ [-Player.x, Player.y ,0], [-Player.x + Math.cos(angle) * 1000, Player.y + Math.sin(angle) * 1000, 0] ],
+          vertices: [ [-args.x1, args.y1 ,0], [-args.x2, args.y2, 0] ],
           faces: [ [0,1] ]
         }
       })
@@ -58,15 +61,39 @@ function showAbility(id) {
 
   }
 
-  if (id == "1") {
-    let Cursor = getCursor();
-
+  if (spellID == "1") {
     entityHierarchy.push(
       particlePrefab.create("areaOfEffectFriendly", {
-        x: Cursor.x, 
-        y: Cursor.y
+        x: args.x2, 
+        y: args.y2
       })
     );
+  }
+
+  if (spellID == "2") {
+    let Cursor = getCursor();
+    
+    entityHierarchy.push(
+      new Entity({
+        z: 0,
+        x: Cursor.x,
+        y: Cursor.y,
+        mesh: meshBuffer.spider,
+        look: {
+          stroke: "#ff0000",
+          fill: "#ff000020"
+        },
+        transform: {
+          scale: 1,
+          rotation: [0, 0, 0]
+        },
+        physics: {
+          collisionRadius: 120,
+          solid: false
+        }
+      })
+    );
+
   }
 }
 
@@ -92,15 +119,11 @@ function useSelectedSlot() {
   if ( cooldowns[slots[selectedSlot]] == undefined || performance.now() > cooldowns[slots[selectedSlot]] ) {
     
     // request network to perform spell
-    // console.log('Requesting to perform', Abilities[slots[selectedSlot]].name);
-    
-    // (will happen after network confirms - outside of this function)
-    // console.log('Server request, render', Abilities[slots[selectedSlot]].name);
-    
-    showAbility(slots[selectedSlot]);
+    console.log('Requesting to perform', Abilities[slots[selectedSlot]].name);
+    requestSpell(slots[selectedSlot]);
 
     // set cooldown 
-    cooldowns[slots[selectedSlot]] = performance.now() + 500//parseInt(Abilities[slots[selectedSlot]].cooldown);
+    cooldowns[slots[selectedSlot]] = performance.now() + 1000//parseInt(Abilities[slots[selectedSlot]].cooldown);
 
   }
 };
@@ -116,4 +139,4 @@ function updateAbilities() {
   }  
 }
 
-export { updateAbilities }
+export { updateAbilities, showAbility }

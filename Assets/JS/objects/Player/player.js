@@ -11,8 +11,6 @@ class PlayerEntity extends Entity {
     super();
     this.type = "Player";
 
-    this.mesh = meshBuffer.ship;
-
     this.transform = {
       scale: 0.5,
       rotation: [0, 0, 0]
@@ -31,11 +29,30 @@ class PlayerEntity extends Entity {
     this.maxSpeed = 20;
     this.frictionIntensity = .5;
 
+    // Input fake rotation handling
+    this.acceleration = 1;
+    this.fr = 2;
+    this.looking = {
+      intensity: 10,
+      direction: Math.PI,
+      lastDirection: Math.PI,
+    
+      addVector : function(d, i) {
+        var x = Math.cos(this.direction) * this.intensity + Math.cos(d) * i;
+        var y = Math.sin(this.direction) * this.intensity + Math.sin(d) * i;
+    
+        this.direction = Math.round( Math.atan2(y, x) * 100 ) / 100;
+        this.intensity = 10
+      }
+    }
+    
+
     // this.label = "[ Player ]"
   }
 }
 
 function initPlayer() {
+  Player.mesh = meshBuffer.ship;
   entityHierarchy.push( Player );
 
   // force field
@@ -58,23 +75,23 @@ function initPlayer() {
 
 function checkInput() {  
   if (keys.up) {
-    Player.addVector(Math.PI * 90 / 180, acceleration);
-    looking.addVector( Math.PI, fr );
+    Player.addVector(Math.PI * 90 / 180, Player.acceleration);
+    Player.looking.addVector( Math.PI, Player.fr );
   }
   if (keys.down) {
-    Player.addVector(Math.PI * 270 / 180, acceleration);
-    looking.addVector( 0, fr );
+    Player.addVector(Math.PI * 270 / 180, Player.acceleration);
+    Player.looking.addVector( 0, Player.fr );
   }
   if (keys.left) {
-    Player.addVector(Math.PI * 180 / 180, acceleration);
-    looking.addVector( Math.PI * 3 / 2, fr );
+    Player.addVector(Math.PI * 180 / 180, Player.acceleration);
+    Player.looking.addVector( Math.PI * 3 / 2, Player.fr );
   }
   if (keys.right) {
-    Player.addVector(Math.PI * 0 / 180, acceleration);
-    looking.addVector( Math.PI / 2, fr );
+    Player.addVector(Math.PI * 0 / 180, Player.acceleration);
+    Player.looking.addVector( Math.PI / 2, Player.fr );
   }
 
-  Player.transform.rotation = [looking.direction, 0, 0]
+  Player.transform.rotation = [Player.looking.direction, 0, 0]
 }
 
 function updatePlayer(deltaTime) {
@@ -90,23 +107,5 @@ function updatePlayer(deltaTime) {
 var Player = new PlayerEntity();
 Player.x = Math.floor(Math.random() * 2000) - 1000;
 Player.y = Math.floor(Math.random() * 2000) - 1000;
-
-// Input fake rotation handling
-var acceleration = 1;
-var fr = 2;
-var looking = {
-  intensity: 10,
-  direction: Math.PI,
-  lastDirection: Math.PI,
-
-  addVector : function(d, i) {
-    var x = Math.cos(this.direction) * this.intensity + Math.cos(d) * i;
-    var y = Math.sin(this.direction) * this.intensity + Math.sin(d) * i;
-
-    this.direction = Math.round( Math.atan2(y, x) * 100 ) / 100;
-    this.intensity = 10
-  }
-}
-
 
 export { Player, initPlayer, updatePlayer };

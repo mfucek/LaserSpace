@@ -59,63 +59,67 @@ class Entity {
 
   // MESH RELATED
   getMesh(optional) {
-    var optional = optional || {};
-
-    // clone mesh to manipulate
-    var mesh2 = JSON.parse(JSON.stringify(this.mesh));
-
-    // scale
-    mesh2.vertices.forEach(v => {
-      v[0] *= this.transform.scale,
-      v[1] *= this.transform.scale,
-      v[2] *= this.transform.scale
-    });
-
-    // parent offset
-    if (this.parent != undefined) {
+    if (this.mesh) {
+      var optional = optional || {};
+  
+      // clone mesh to manipulate
+      var mesh2 = JSON.parse(JSON.stringify(this.mesh));
+  
+      // scale
       mesh2.vertices.forEach(v => {
-        v[0] -= this.parent.x,
-        v[1] += this.parent.y,
-        v[2] += this.parent.z
+        v[0] *= this.transform.scale,
+        v[1] *= this.transform.scale,
+        v[2] *= this.transform.scale
       });
+  
+      // parent offset
+      if (this.parent != undefined) {
+        mesh2.vertices.forEach(v => {
+          v[0] -= this.parent.x,
+          v[1] += this.parent.y,
+          v[2] += this.parent.z
+        });
+      }
+  
+      // transform (rotation)
+      var g = Math.PI / 2
+      var rt = {
+        x: this.transform.rotation[0] - g,
+        y: this.transform.rotation[1] + g,
+        z: this.transform.rotation[2] - g,
+      };
+  
+      mesh2.vertices.forEach(v => {
+        var d = Math.hypot(v[0], v[1]);
+        var angle = Math.atan2( v[0], v[1]);
+        v[0] = d * Math.cos(angle + rt.x);
+        v[1] = d * Math.sin(angle + rt.x);
+      });
+      mesh2.vertices.forEach(v => {
+        var d = Math.hypot(v[1], v[2]);
+        var angle = Math.atan2( v[1], v[2]);
+        v[1] = d * Math.cos(angle + rt.y);
+        v[2] = d * Math.sin(angle + rt.y);
+      });
+      mesh2.vertices.forEach(v => {
+        var d = Math.hypot(v[2], v[0]);
+        var angle = Math.atan2( v[2], v[0]);
+        v[2] = d * Math.cos(angle + rt.z);
+        v[0] = d * Math.sin(angle + rt.z);
+      });
+  
+      // local to global coordinates
+      mesh2.vertices.forEach(v => {
+        v[0] += this.x;
+        v[1] += this.y;
+        v[2] += this.z;
+      });
+  
+      // console.log(mesh2.vertices[0]);
+      return mesh2;
+    } else {
+      return {}
     }
-
-    // transform (rotation)
-    var g = Math.PI / 2
-    var rt = {
-      x: this.transform.rotation[0] - g,
-      y: this.transform.rotation[1] + g,
-      z: this.transform.rotation[2] - g,
-    };
-
-    mesh2.vertices.forEach(v => {
-      var d = Math.hypot(v[0], v[1]);
-      var angle = Math.atan2( v[0], v[1]);
-      v[0] = d * Math.cos(angle + rt.x);
-      v[1] = d * Math.sin(angle + rt.x);
-    });
-    mesh2.vertices.forEach(v => {
-      var d = Math.hypot(v[1], v[2]);
-      var angle = Math.atan2( v[1], v[2]);
-      v[1] = d * Math.cos(angle + rt.y);
-      v[2] = d * Math.sin(angle + rt.y);
-    });
-    mesh2.vertices.forEach(v => {
-      var d = Math.hypot(v[2], v[0]);
-      var angle = Math.atan2( v[2], v[0]);
-      v[2] = d * Math.cos(angle + rt.z);
-      v[0] = d * Math.sin(angle + rt.z);
-    });
-
-    // local to global coordinates
-    mesh2.vertices.forEach(v => {
-      v[0] += this.x;
-      v[1] += this.y;
-      v[2] += this.z;
-    });
-
-    // console.log(mesh2.vertices[0]);
-    return mesh2;
   }
 
   // PHYSICS DYNAMICS

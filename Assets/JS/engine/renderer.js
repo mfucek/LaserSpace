@@ -1,4 +1,5 @@
 import { entityHierarchy } from "../objects/entityHierarchy";
+import { playerList } from "../networking/communication/socket"
 
 import { c, ctx, initialHeight, initialWidth } from "../interface/canvas";
 
@@ -10,7 +11,7 @@ import { debug } from "../debug";
 
 window.collisions = false;
 
-function render() {
+function render() {   
 
   c.width = c.width; // CLS
   
@@ -24,7 +25,7 @@ function render() {
   
 
   
-  var sortedEntityHierarchy = [...entityHierarchy].sort((a, b) => (a.z > b.z) ? 1 : -1);
+  var sortedEntityHierarchy = [...entityHierarchy, ...Object.values(playerList)].sort((a, b) => (a.z > b.z) ? 1 : -1);
   (sortedEntityHierarchy).forEach(element => {
 
     // LABEL HANDLING        

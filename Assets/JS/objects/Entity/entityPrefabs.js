@@ -1,10 +1,18 @@
 import { meshBuffer } from "../../networking/buffers/meshBuffer"
 
 import { Entity } from "../Entity/entity";
+import { entityHierarchy } from "../entityHierarchy";
 
 var entityPrefab = {
+  create : function(obj, optional) {
+    var r = new Entity( { ...this[obj], ...optional } );    
+    return r
+  }
+}
 
-  meteor: {
+function createEntityPrefabs() {
+  
+  entityPrefab.meteor = {
     mesh: meshBuffer.meteor,
     look: {
       stroke: "#ffffff08",
@@ -17,9 +25,9 @@ var entityPrefab = {
     animations: {
       spin: 0.02
     }
-  },
-  
-  ship: {
+  }
+
+  entityPrefab.ship = {
     mesh: meshBuffer.ship,
     look: {
       stroke: "#ffffff",
@@ -29,9 +37,9 @@ var entityPrefab = {
       scale: 0.5,
       rotation: [0, 0, 0]
     }
-  },
+  }
 
-  capture: {
+  entityPrefab.capture = {
     z: -10,
     mesh: meshBuffer.capture,
     look: {
@@ -42,14 +50,11 @@ var entityPrefab = {
       scale: 1,
       rotation: [0,0,0]
     }
-  },
-
-  create : function(obj, optional) {
-    var r = new Entity( { ...this[obj], ...optional } );    
-    return r
   }
+  
 }
+
 
 // window.entityPrefab = entityPrefab;
 
-export { entityPrefab };
+export { entityPrefab, createEntityPrefabs };

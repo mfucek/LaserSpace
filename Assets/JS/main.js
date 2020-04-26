@@ -1,6 +1,11 @@
+
+import { loadBuffers } from "./networking/buffers/meshBuffer"
+import { createEntityPrefabs } from "./objects/Entity/entityPrefabs"
+import { createParticlePrefabs } from "./objects/Particle/particlePrefabs"
+
 import { } from "./interface/canvas";
 import { } from "./interface/userInterface";
-import { updateTooltip, initAbilityFunctions } from "./interface/tooltip"
+// import { updateTooltip, initAbilityFunctions } from "./interface/tooltip"
 
 import { render } from "./engine/renderer";
 import { Camera } from "./camera/camera";
@@ -17,6 +22,9 @@ import { updatePhysics } from "./objects/Player/physics";
 import { updateParticles } from "./objects/Particle/particle";
 import { updateAnimations } from "./engine/effectRenderer";
 
+import { } from "./networking/communication/socket"
+import { giveInfo } from "./networking/communication/update";
+
 
 function update(deltaTime) {
   // console.log( deltaTime );
@@ -27,20 +35,19 @@ function update(deltaTime) {
   updatePlayer(deltaTime);
   updatePhysics();
   Camera.adjust();
-
   
   updateAnimations();
-
   updateParticles();
   
+  if (Player.intensity != 0) {
+    giveInfo();
+  }
 }
 
 function loop(timestamp) {
   var deltaTime = performance.now() - lastTime;
 
-  // console.log( 1000 / deltaTime);
-  
-
+  // console.log( "FPS: " + 1000 / deltaTime);
   update(deltaTime);
 
   render();
@@ -49,13 +56,32 @@ function loop(timestamp) {
   window.requestAnimationFrame(loop);
 }
 
-initPlayer();
-placeLevel();
-
-initMouse();
-
 var lastTime = 0;
-window.requestAnimationFrame(loop);
+
+loadBuffers();
+
+setTimeout(() => {
+  console.log(meshBuffer.circle,
+    meshBuffer.meteor,
+    meshBuffer.wreck,
+    meshBuffer.capture,
+    meshBuffer.spider,
+    meshBuffer.ship);
+  
+  initPlayer();
+  createEntityPrefabs();
+  createParticlePrefabs();
+  placeLevel();
+  
+  initMouse();
+  
+  giveInfo();
+  window.requestAnimationFrame(loop);
+}, 0);
+
+
+
+
 
 
 
