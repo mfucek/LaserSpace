@@ -1,6 +1,7 @@
 import { projectVertex } from "./projection";
 import { ctx } from "../interface/canvas";
 import { Camera } from "../camera/camera";
+import { debug } from "../debug";
 
 // dash ne radi
 
@@ -61,6 +62,10 @@ function drawText(text, vert) {
     var lineWidth = look.lineWidth || [1];
     var shadowColor = look.shadowColor || undefined;
     var shadowBlur = look.shadowBlur || 0;
+    if (debug.noShadows) {
+      shadowColor = undefined;
+      shadowBlur = undefined;
+    }
     ctx.setLineDash(look.dash || []);   
     // TODO opacity handling
     // get current stroke/fill opacity [7,8], median with opacity

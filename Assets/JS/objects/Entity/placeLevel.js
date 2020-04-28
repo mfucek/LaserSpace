@@ -95,7 +95,7 @@ function placeLevel() {
   // Capture Points
   entityHierarchy.push(
     entityPrefab.create("capture", {
-      x: -1000, 
+      x: -2000, 
       y: 0,
       look: {
         stroke: "#ff0000",
@@ -114,7 +114,7 @@ function placeLevel() {
   );
   entityHierarchy.push(
     entityPrefab.create("capture", {
-      x: 1000, 
+      x: 2000, 
       y: 0,
       look: {
         stroke: "#37CFFF",

@@ -1,6 +1,7 @@
 
 import { entityHierarchy } from "../entityHierarchy";
 import { particlePrefab } from "../Particle/particlePrefabs";
+import { playerList } from "../../networking/communication/socket"
 
 function testCollisions(obj1, obj2) {
   if (
@@ -38,7 +39,7 @@ function testCollisions(obj1, obj2) {
 };
 
 function updatePhysics() {
-  entityHierarchy.forEach(e => {
+  [...entityHierarchy, ...Object.values(playerList)].forEach(e => {
     if (e.physics.solid == true & Player != e) {
       testCollisions(Player, e);
     }

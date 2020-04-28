@@ -8,25 +8,43 @@ import {ui} from "../../interface/userInterface";
 import { entityHierarchy } from "../../objects/entityHierarchy";
 import { particlePrefab } from "../../objects/Particle/particlePrefabs";
 import { Player } from "../../objects/Player/player";
+import { Entity } from "../../objects/Entity/entity";
 
 
 // const socket = io.connect("https://laserspaceserver.herokuapp.com/");
 const socket = io.connect("192.168.8.100:3000");
 
+
+var playerID = Math.floor(Math.random() * 100000);
+var nickname = "Guest" + playerID
+
+// var spawnPoint = entityPrefab.create("spawnPoint", {
+//   x: Player.spawnCoordinates.x,
+//   y: Player.spawnCoordinates.y
+// });
+// entityHierarchy.push(spawnPoint);;
+
+
 socket.on("connect", e => {
   console.log("connected", e);
+  ui.name.innerHTML = nickname
+
+  socket.emit('Login', playerID);
+  socket.emit('Heartbeat', playerID)
+  
+  setInterval(heartbeat, 1000);
+  function heartbeat() {
+    socket.emit('Heartbeat', playerID);
+    giveInfo();
+  }
 });
 
 
-var playerID = Math.floor(Math.random() * 100000);
-var nickname = playerID + "NICK"
-ui.name.innerHTML = nickname
-
-// setTimeout( function() {
-//   nickname = "asd"
-//   ui.name.innerHTML = nickname
-//   Player.nickname
-// }, 5000)
+function changeName(newName) {
+  nickname = newName
+  ui.name.innerHTML = nickname
+  Player.nickname = nickname    
+}
 
 
 var playerList = {};
@@ -36,14 +54,6 @@ var playerList = {};
 
 
 
-socket.emit('Login', playerID);
-socket.emit('Heartbeat', playerID)
-
-var agg = setInterval(heartbeat, 1000);
-function heartbeat() {
-  socket.emit('Heartbeat', playerID);
-  giveInfo();
-}
 
 
 socket.on("Disconnect", (id) => {
@@ -60,11 +70,18 @@ socket.on("Disconnect", (id) => {
   console.log( playerList );
 })
 
+setInterval(function () {
+  // console.log(socket.disconnected);
+  
+  if (socket.disconnected) {
+    ui.name.innerHTML = "Disconnected..."
+  }
+}, 1000)
 
-socket.on('Command', (msg) => {
-  if (msg.playerID == playerID) {
-    Object.keys(msg.attrs).forEach( attr => {
-      Player[attr] = msg.attrs[attr]
+socket.on('CommandSync', (msg) => {  
+  if (msg.playerID == playerID) {    
+    msg.attrs.forEach( attr => {
+      Player[attr] = msg.objectInfo[attr]
     })
   }
 })
@@ -85,6 +102,7 @@ socket.on('Sync', (msg) => {
         
         playerList[ p[0] ].x = p[1].x
         playerList[ p[0] ].y = p[1].y
+        playerList[ p[0] ].label = p[1].name + "(" + p[1].health + " /\n " + p[1].maxHealth + ")"
         
         // // console.log( [p[1].direction, 0, 0] );       
         
@@ -97,6 +115,10 @@ socket.on('Sync', (msg) => {
           x: p[1].x,
           y: p[1].y,
           label: p[1].name,
+          physics: {
+            solid: true,
+            collisionRadius: 200
+          }
           // direction: p[1].velocity.direction,
           // intensity: p[1].velocity.intensity,
         })
@@ -110,9 +132,12 @@ socket.on('Sync', (msg) => {
       // console.log(p[1].info);
       // console.log(p[1]);
       
-      ui.name.innerHTML = nickname + " (team" + Player.info.team + ")"
-      ui.health.innerHTML = Player.info.health + " / " + Player.info.maxHealth + " HP"
-      
+      ui.name.innerHTML = nickname + " (team" + Player.team + ")"
+      ui.health.innerHTML = Player.health + " / " + Player.maxHealth + " HP"
+
+      // spawnPoint.x = Player.spawnCoordinates.x,
+      // spawnPoint.y = Player.spawnCoordinates.y
+          
     }
   });
 
@@ -135,4 +160,4 @@ socket.on('Sync', (msg) => {
 //   }
 // });
 
-export { socket, playerID, playerList, nickname }
+export { socket, playerID, playerList, nickname, changeName }

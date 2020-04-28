@@ -1,4 +1,5 @@
 import { keys } from "../input/keyboard";
+import { changeName } from "../networking/communication/socket"
 
 var ui = {
   root: document.querySelector(".ui"),
@@ -23,7 +24,7 @@ var ui = {
 window.ui = ui;
 
 ui.health.innerHTML = 20 + " / 100 HP"
-ui.experience.innerHTML = 20 + " / 100 XP"
+ui.experience.innerHTML = "press F2 to change name"// 20 + " / 100 XP"
 ui.level.innerHTML = 6
 
 console.log("User interface mapped.");
@@ -33,12 +34,37 @@ ui.overlayClose.addEventListener("click", function(){
   ui.overlay.classList.add('hidden');
 });
 
+var disableInput = false;
+
 function updateInterface() {
-  if (keys.openTalents) {
-    ui.overlay.classList.remove('hidden');
-  }
-  if (keys.close) {
-    ui.overlay.classList.add('hidden');
+  if (!disableInput) {
+
+    if (keys.openTalents) {
+      ui.overlay.classList.remove('hidden');
+    }
+    if (keys.close) {
+      ui.overlay.classList.add('hidden');
+      document.querySelector("#nameModal").classList.add('hidden');
+    }
+    if (keys.changeName) {
+      keys.changeName = false;
+
+      disableInput = true
+      
+      var field = document.querySelector("#nameField")      
+      document.querySelector("#nameModal").classList.toggle('hidden');      
+      field.focus();
+      field.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+          disableInput = false
+          console.log(field.value);
+          changeName(field.value);
+          field.value = "";
+          document.querySelector("#nameModal").classList.toggle('hidden');
+        }
+      });
+      
+    }
   }
 
   var time = 240 - performance.now() / 1000

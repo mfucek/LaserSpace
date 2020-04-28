@@ -16,7 +16,8 @@ var keyMap = {
   'a4': 52,
   's1': 16,
   'openTalents': 84,
-  'close': 27
+  'close': 27,
+  'changeName': 113
 };
 
 

@@ -1,6 +1,7 @@
 const debug = {
   physicsBoundary: false,
-  showParticles: true
+  showParticles: true,
+  noShadows: true,
 }
 
 export { debug }

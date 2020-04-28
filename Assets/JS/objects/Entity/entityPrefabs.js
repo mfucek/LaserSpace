@@ -52,6 +52,19 @@ function createEntityPrefabs() {
     }
   }
   
+  entityPrefab.spawnPoint = {
+    z: -10,
+    mesh: meshBuffer.circle,
+    look: {
+      stroke: "#ffffff20",
+      fill: "#00000000"
+    },
+    transform: {
+      scale: 1,
+      rotation: [0,0,0]
+    }
+  }
+  
 }
 
 
