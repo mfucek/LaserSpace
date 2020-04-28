@@ -54,13 +54,17 @@ function updateInterface() {
       var field = document.querySelector("#nameField")      
       document.querySelector("#nameModal").classList.toggle('hidden');      
       field.focus();
-      field.addEventListener("keyup", function(event) {
+      function checkInput() {
+        
+      }
+      field.addEventListener("keyup", function _func(event) {
         if (event.key === "Enter") {
           disableInput = false
           console.log(field.value);
           changeName(field.value);
           field.value = "";
           document.querySelector("#nameModal").classList.toggle('hidden');
+          field.removeEventListener('keyup', _func)
         }
       });
       

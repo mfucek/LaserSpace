@@ -123,6 +123,20 @@ socket.on('Sync', (msg) => {
           // intensity: p[1].velocity.intensity,
         })
         playerList[ p[0] ].transform.rotation = [p[1].direction, 0, 0]
+
+        // other player's HALO
+
+        // entityHierarchy.push(
+        //   new Entity({
+        //     mesh: meshBuffer.circle,
+        //     look: {stroke: "#ffffff20", lineWidth: 1},
+        //     transform: { 
+        //       scale: 2,
+        //       rotation: [0, 0, 0]},
+        //     parent: playerList[ p[0] ]
+        //   })
+        // );
+
         console.log( playerList );
         
       }
