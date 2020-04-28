@@ -54,9 +54,7 @@ function updateInterface() {
       var field = document.querySelector("#nameField")      
       document.querySelector("#nameModal").classList.toggle('hidden');      
       field.focus();
-      function checkInput() {
-        
-      }
+      
       field.addEventListener("keyup", function _func(event) {
         if (event.key === "Enter") {
           disableInput = false

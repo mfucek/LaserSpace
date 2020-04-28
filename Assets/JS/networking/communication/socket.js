@@ -102,7 +102,7 @@ socket.on('Sync', (msg) => {
         
         playerList[ p[0] ].x = p[1].x
         playerList[ p[0] ].y = p[1].y
-        playerList[ p[0] ].label = p[1].name + "(" + p[1].health + " /\n " + p[1].maxHealth + ")"
+        playerList[ p[0] ].label = p[1].name + " (" + p[1].health + " / " + p[1].maxHealth + ")"
         
         // // console.log( [p[1].direction, 0, 0] );       
         

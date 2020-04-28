@@ -1,11 +1,16 @@
-filename = "cursor"
-f = open("Assets/OBJ/" + filename + ".obj", "r")
-f2 = open("Assets/OBJ/" + filename + ".json", "w")
+from os.path import dirname, join
+
+current_dir = dirname(__file__)
+
+filename = "mothership"
+f = open(join(current_dir, "./" + filename + ".obj"), "r")
+f2 = open(join(current_dir, "../" + filename + ".json"), "w")
 
 vertexes = []
 faces = []
 
 r = f.readline()
+
 while r:
 
   print(r[0:2])

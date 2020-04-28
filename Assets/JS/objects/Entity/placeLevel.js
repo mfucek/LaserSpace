@@ -60,6 +60,49 @@ function placeLevel() {
     })
   );
 
+  
+  entityHierarchy.push(
+    new Entity({
+      z: -50,
+      x: -1000,
+      y: 2000,
+      mesh: meshBuffer.mothership,
+      look: {
+        stroke: "#ffffff",
+        fill: "#37CFFF10"
+      },
+      transform: {
+        scale: 0.5,
+        rotation: [-1, 0, 0]
+      },
+      physics: {
+        collisionRadius: 120,
+        solid: false
+      }
+    })
+  );
+  
+  entityHierarchy.push(
+    new Entity({
+      z: -50,
+      x: 1000,
+      y: -2000,
+      mesh: meshBuffer.mothership,
+      look: {
+        stroke: "#ffffff",
+        fill: "#FF4F3710"
+      },
+      transform: {
+        scale: 0.5,
+        rotation: [3.14-1, 0, 0]
+      },
+      physics: {
+        collisionRadius: 120,
+        solid: false
+      }
+    })
+  );
+
   // Meteors
   entityHierarchy.push(
     entityPrefab.create("meteor", {

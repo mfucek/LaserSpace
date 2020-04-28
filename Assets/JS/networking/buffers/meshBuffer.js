@@ -17,6 +17,7 @@ function loadBuffers() {
   meshBuffer.circle = require('../../../OBJ/circle.json');
   meshBuffer.meteor = require('../../../OBJ/meteor.json');
   meshBuffer.wreck = require('../../../OBJ/wreck.json');
+  meshBuffer.mothership = require('../../../OBJ/mothership.json');
   meshBuffer.capture = require('../../../OBJ/capture.json');
   meshBuffer.spider = require('../../../OBJ/spider.json');
   meshBuffer.ship = require('../../../OBJ/ship.json');

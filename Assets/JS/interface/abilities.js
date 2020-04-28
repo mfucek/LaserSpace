@@ -123,16 +123,40 @@ function useSelectedSlot() {
     requestSpell(slots[selectedSlot]);
 
     // set cooldown 
-    cooldowns[slots[selectedSlot]] = performance.now() + 1000//parseInt(Abilities[slots[selectedSlot]].cooldown);
+    cooldowns[slots[selectedSlot]] = performance.now() + 500//parseInt(Abilities[slots[selectedSlot]].cooldown);
+    // show the cooldown in UI
+    document.querySelector('#slot-3').classList.add('cooldown')
+    document.querySelector('#slot-2').classList.add('cooldown')
+    document.querySelector('#slot-1').classList.add('cooldown')
+    setTimeout(function () {      
+      document.querySelector('#slot-3').classList.remove('cooldown')
+      document.querySelector('#slot-2').classList.remove('cooldown')
+      document.querySelector('#slot-1').classList.remove('cooldown')
+    }, 500)
 
   }
 };
 
 function updateAbilities() {
-  if (keys.a1) { selectedSlot = 0 };
-  if (keys.a2) { selectedSlot = 1 };
-  if (keys.a3) { selectedSlot = 2 };
-  if (keys.a4) { selectedSlot = 3 };
+  if (keys.a1) {
+    selectedSlot = 0
+    document.querySelector('#slot-1').classList.add('pressed')
+    document.querySelector('#slot-2').classList.remove('pressed')
+    document.querySelector('#slot-3').classList.remove('pressed')
+  };
+  if (keys.a2) {
+    selectedSlot = 1
+    document.querySelector('#slot-2').classList.add('pressed')
+    document.querySelector('#slot-1').classList.remove('pressed')
+    document.querySelector('#slot-3').classList.remove('pressed')
+  };
+  if (keys.a3) {
+    selectedSlot = 2
+    document.querySelector('#slot-3').classList.add('pressed')
+    document.querySelector('#slot-2').classList.remove('pressed')
+    document.querySelector('#slot-1').classList.remove('pressed')
+  };
+  // if (keys.a4) { selectedSlot = 3 };
 
   if (mouseButtons.left) {
     useSelectedSlot();
