@@ -12,7 +12,8 @@ import { Entity } from "../../objects/Entity/entity";
 
 
 // const socket = io.connect("https://laserspaceserver.herokuapp.com/");
-const socket = io.connect("192.168.8.100:3000");
+// const socket = io.connect("192.168.8.100:3000");
+const socket = io.connect("localhost:3000");
 
 
 var playerID = Math.floor(Math.random() * 100000);
