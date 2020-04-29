@@ -13,7 +13,7 @@ import { Entity } from "../../objects/Entity/entity";
 // const socket = io.connect("https://laserspaceserver.herokuapp.com/");
 let url = "localhost:3000";
 if (process.env.NODE_ENV === "production") {
-  url = "http://laserspace.mundus.tech";
+  url = "https://laserspace.mundus.tech";
 }
 const socket = io.connect(url);
 // const socket = io.connect("192.168.8.100:3000");
